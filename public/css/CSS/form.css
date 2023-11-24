@@ -1,0 +1,29 @@
+.input{
+    font-family: 'Inder', sans-serif;
+    font-size: 16px;
+    padding: 16px 160px 16px 8px;
+    border-radius: 8px;
+    border-color: 2px solid var(--gris);
+    margin: 8px 8px;
+    }
+.login-input {
+    font-family: 'Inder', sans-serif;
+    font-size: 16px;
+    padding: 16px 48px 16px 8px;
+    border-radius: 8px;
+    border-color: 1px solid var(--gris);
+    margin-bottom: 16px;
+    
+    } 
+.caja-destacada .block {
+    width: 100%;
+   
+}
+.login .nombre {
+    display:flex;
+}
+.inicio .block {
+  
+    width: 100%;
+    padding-right: 200px;
+}

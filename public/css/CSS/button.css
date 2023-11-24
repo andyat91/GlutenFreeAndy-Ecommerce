@@ -1,0 +1,39 @@
+/*poner el boton de carrito para que pueda tener el numero flotando*/
+
+header #cantidad{
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    background-color: var(--primario-oscuro);
+    color: var(--blanco);
+
+    display:flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.btn,#carrito{
+    color:var(--primario-oscuro);
+    text-decoration: none;
+    display:inline-block;
+    border: 2px ;
+    padding: 16px 24px;
+    border-radius: 8px;
+    background-color: var(--gris);
+}
+#carrito{
+    position: relative;
+    margin: 8px 8px;
+}
+.btn:hover,#carrito:hover{
+    background-color: var(--primario-claro);
+}
+
+.login .btn {
+    display:inline;
+    width: 100%;
+    
+}

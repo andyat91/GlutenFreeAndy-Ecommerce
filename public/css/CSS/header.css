@@ -1,0 +1,14 @@
+header .index-login {
+   display:flex;
+   align-items: center; 
+   justify-content: space-between;
+}
+header h3 {
+    margin: 0px
+}
+header #logo{
+    color:var(--primario);
+}
+header h3{
+    color: var(--negro);
+}

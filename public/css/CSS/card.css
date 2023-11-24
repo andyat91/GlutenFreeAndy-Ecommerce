@@ -1,0 +1,49 @@
+.valoracion {
+    color:var(--primario-claro);
+    margin-right: 8px;
+}
+.btn-block {
+    display:block;
+}
+.card {
+    padding: 16px;
+    border-radius: 5%;
+    background-color: white;
+               
+}
+.card img{
+    width: 100%;
+    height: 160px; 
+    overflow: hidden;
+}
+.valoracion i{
+    margin-right: 8px;
+}
+.m-productos .wrap{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  padding:0px;
+}
+.m-productos .wrap h3,h4{
+  margin:0px
+}
+.m-productos .wrap .btn{
+  margin-top: 32px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+}
+
+  .card span i:hover{
+    color: var(--resalto);
+  }
+  .main-cards{
+   display: flex;
+   justify-content: space-between;
+   padding:0px;
+   gap:8px
+  }
+  
+  

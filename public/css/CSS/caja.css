@@ -1,0 +1,26 @@
+.login .caja{
+    padding:40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.caja-destacada{
+    padding: 40px;
+    border: 2px solid var(--primario-claro);
+    border-radius: 16px;
+}
+/*LOGIN CAJAS :*/
+
+.login {
+    display: flex;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    
+}
+.login .caja-destacada{
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+}
