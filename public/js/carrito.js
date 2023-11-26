@@ -1,5 +1,5 @@
 const host = "http://localhost:8000";
-window.addEventListener("load",compras(5));
+window.addEventListener("load",selectCard,compras(5));
 
 function compras (compraid) {
 console.log(compraid);
@@ -40,4 +40,28 @@ console.log(compraid);
 
     })
 
+}
+
+function selectCard() {
+
+    fetch(`${host}/finalizarcompra`,
+    
+    
+    ).then(function(response) {
+        return response.json()
+    
+    }).then (function(json) {
+        console.log(json)
+
+        const containertarjeta = document.getElementById("tarjetaselect");
+        containertarjeta.innerHTML = `Tarjeta seleccionada :${json}`;
+
+        console.log(containertarjeta);
+       
+
+    }).catch(function(error) {
+        console.log(error)
+
+    })
+     
 }

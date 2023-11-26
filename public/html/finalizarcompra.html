@@ -34,21 +34,27 @@
 </header>
 <main>
             <h3>Finalizar compra</h3>
-            <a href="pasareladepago.html" class="btn">Mastercard...4564</a>
-            <button type="submit" class="btn">Cambiar metodo de pago</button>
+
+            <div id="tarjetaselect">
+              tarjeta seleccionada aqui
+            </div>
+
+            <a href="pasareladepago.html" >Cambiar metodo de pago</a>
             <div>
+
               <form>
-                <input type="text" name="nombre" placeholder="Nombre" id="nombre"/>
-                <input type="text" name="apellidos" placeholder="apellidos" id="apellidos"/>
-                <input type="number" name="telefono" placeholder="telefono" id="telefono"/>
-                <input type="email" name="email" placeholder="email" id="email"/>
-                <input type="text" name="calle" placeholder="calle" id="calle"/>
-                <input type="number" name="numero" placeholder="numero" id="numero"/>
-                <input type="text" name="provincia" placeholder="provincia" id="provincia"/>
-                <input type="number" name="CP" placeholder="CP" id="CP"/>
-                <input type="text" name="pais" placeholder="pais"/>
-                <button type="submit" value="nuevadireccion"class="btn">Guarda esta dirección</button>               
+                <input type="text"  placeholder="Nombre" id="nombre"/>
+                <input type="text"  placeholder="apellidos" id="apellidos"/>
+                <input type="number"  placeholder="telefono" id="telefono"/>
+                <input type="email"  placeholder="email" id="email"/>
+                <input type="text" placeholder="calle" id="calle"/>
+                <input type="number"  placeholder="numero" id="numero"/>
+                <input type="text"  placeholder="provincia" id="provincia"/>
+                <input type="number"  placeholder="CP" id="CP"/>
+                <input type="text" placeholder="pais" id="pais"/>
+                         
               </form>
+              <buton onclick="utilizarDireccion()">Utiliza esta dirección</buton>
             </div>
             <div>
               <img src="../Images/Glutenfree1.jpg.jpg" alt="logo" width="10%"/>
@@ -154,6 +160,8 @@
       </div>
     </div>
 </footer>
-<script src="/js/carrito.js"></script>
+
+
+<script src="/js/carrito.js" > </script>
 </body>
 </html>

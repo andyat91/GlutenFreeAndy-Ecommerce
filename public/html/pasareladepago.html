@@ -42,19 +42,23 @@
 
     <h3>Mis tarjetas</h3>
     <div id="mistarjetas">
-  </div> 
 
+  </div> 
+  <a href="finalizarcompra.html" >Pagar con esta tarjeta</a>
   
    </div> 
    <div class="caja">
+    
     <h3>Añadir nueva tarjeta</h3>
     <form>
-        <input type="number" name="numero" id="numero" placeholder="Numero de tarjeta"/>
-        <input type="text" name="nombre" id="nombre" placeholder="Titular de la tarjeta"/>
-        <input type="date" name="fecha" id="fecha" placeholder="Fecha de caducidad"/>
-        <input type="number" name="CVV" id="CVV" placeholder="CVV"/>
-        <input type="submit" value="Añadir a mis tarjetas" class="btn"/>
+        <input type="text" id="numerotarjeta" placeholder="Numero de tarjeta"/>
+        <input type="text"  id="titulartarjeta" placeholder="Titular de la tarjeta"/>
+        <input type="text" id="tipotarjeta" placeholder="Tipo de tarjeta"/>
+        <input type="text"  id="caducidad" placeholder="Fecha de caducidad"/>
+        <input type="text"  id="CVV" placeholder="CVV"/>
+        
     </form>
+    <button onclick="addCard()">Añadir tarjeta</button>
    </div>
 
    <section class="wrap garantia">
@@ -138,5 +142,6 @@
       </div>
     </div>
 </footer>
+<script src="/js/pasareladepago.js" ></script>
 </body>
 </html>
