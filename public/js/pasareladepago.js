@@ -1,10 +1,12 @@
-const host = "http://localhost:8000";
-window.addEventListener("load",formadepago(5),selectCard);
 
-function formadepago (idusuario) {
-    console.log(idusuario);
+window.addEventListener("load",formadepago());
 
-    fetch(`/pasareladepago/${idusuario}`
+function formadepago() {
+
+    let usuarioid = 5;
+
+
+    fetch(`http://localhost:8000/pasareladepago/${usuarioid}`
     
     
     
@@ -16,8 +18,8 @@ function formadepago (idusuario) {
 
         const containertarjeta = document.getElementById("mistarjetas");
         containertarjeta.innerHTML = `<ul>`;
-        for(i=0 ; i<json.length ; i++) {                                            //aqui iria ${json[i].numerotarjeta}
-            containertarjeta.innerHTML += `<li>${json[i].numerotarjeta} </li>` //<button onclick=selectCard()>Seleccionar esta tarjeta</button> 
+        for(i=0 ; i<json.length ; i++) {                                            
+            containertarjeta.innerHTML += `<li><button class="btn" onclick="selectCard('${json[i].id}')">${json[i].numerotarjeta}  Seleccionar esta tarjeta</button> </li>`
         }
         containertarjeta.innerHTML+=`</ul>`;
         
@@ -28,21 +30,25 @@ function formadepago (idusuario) {
 
 function addCard() {
 
+    let usuarioid = 5;
+
 //falta arreglar idusuario 
     const numerotarjeta = document.getElementById("numerotarjeta").value;
     const titulartarjeta = document.getElementById("titulartarjeta").value;
     const tipotarjeta = document.getElementById("tipotarjeta").value;
     const caducidad = document.getElementById("caducidad").value;
     const CVV = document.getElementById("CVV").value;
+   
+    //usuarioid 
     
-console.log(numerotarjeta)
 
-    fetch(`${host}/pasareladepago`, {
+
+    fetch(`http://localhost:8000/pasareladepago`, {
         method:"POST",
         headers: {
         "Content-Type":"application/json"
     },
-    body: JSON.stringify({numerotarjeta:numerotarjeta , titulartarjeta:titulartarjeta, tipotarjeta:tipotarjeta , caducidad:caducidad , CVV:CVV})
+    body: JSON.stringify({numerotarjeta:numerotarjeta , titulartarjeta:titulartarjeta, tipotarjeta:tipotarjeta , caducidad:caducidad , CVV:CVV , usuarioid:usuarioid})
     
 
     }).then(function(response) {
@@ -50,13 +56,20 @@ console.log(numerotarjeta)
     
     }).then(function(json) {
         console.log(json)
-        alert("Tarjeta añadida");
+        alert(json.message);
     
     
     }).catch(function(error) {
         console.log(error)
 
     })
+
+};
+//esta funcion guarda el numero de tarjeta para mostrarlo en la pagina siguiente.
+
+function selectCard(numerotarjeta) {
+    console.log(numerotarjeta);
+    localStorage.setItem("numerotarjeta",numerotarjeta);
 
 };
 

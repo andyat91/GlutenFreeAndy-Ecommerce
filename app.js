@@ -53,18 +53,18 @@ connection.connect(function(error) {
 
     app.get(`/pasareladepago/:idusuario`, function(request,response) {
 
-
+    
     const idusuario = request.params.idusuario;
-    let asterisco = "";
+    
         connection.query(
-            `SELECT  formadepago.numerotarjeta FROM formadepago JOIN usuario ON formadepago.usuarioid = usuario.id where usuario.id = "${idusuario}"`,
+            `SELECT  formadepago.numerotarjeta,usuario.id,formadepago.id FROM formadepago JOIN usuario ON formadepago.usuarioid = usuario.id where usuario.id = "${idusuario}"`,
             function (error,result,fields) {
                 if (error) {
                     response.status(400).send(`error ${error.message}`);
                     return;
                   } //lo que quier aqui esque convierta el numero de tarjeta con asteriscos
                   for(let i=0 ; i<result.length ; i++) {
-    
+                    let asterisco = "";
                     for( let j=0 ; j<result[i].numerotarjeta.length ; j++) {
                       if(j<12) {
                         asterisco += "*";
@@ -73,8 +73,10 @@ connection.connect(function(error) {
                       }
                      // result[j].numerotarjeta = asterisco;
                     }
-                    result.numerotarjeta = asterisco;
+                    result[i].numerotarjeta = asterisco;
                 }
+
+
             response.send(result);
           //  console.log(result);
             });
@@ -84,35 +86,40 @@ connection.connect(function(error) {
 
     app.post("/pasareladepago", function(request,response) {
 
-
+        let usuarioid = request.body.usuarioid;
         let numerotarjeta = request.body.numerotarjeta;
         let titulartarjeta = request.body.titulartarjeta;
         let tipotarjeta = request.body.tipotarjeta;
         let caducidad = request.body.caducidad;
         let CVV = request.body.CVV;
         //console.log(numerotarjeta,titulartarjeta,tipotarjeta,caducidad,CVV,idusuario)
+        console.log(usuarioid);
         connection.query(
-            `insert into formadepago (numerotarjeta,titulartarjeta,tipotarjeta,caducidad,CVV) values ("${numerotarjeta}","${titulartarjeta}","${tipotarjeta}","${caducidad}","${CVV}")`,
+            `insert into formadepago (numerotarjeta,titulartarjeta,tipotarjeta,caducidad,CVV,usuarioid) values ("${numerotarjeta}","${titulartarjeta}","${tipotarjeta}","${caducidad}","${CVV}","${usuarioid}")`,
             function(error,result,fields) {
                 if (error) {
                     response.status(400).send(`error ${error.message}`);
+                    return;
                   }
            //   console.log(result) ;
-          response.send(result);
+           response.send({message:"compra finalizada"});
 
             });
     });
 //------Endopoints para finalizar compra------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    app.get("/finalizarcompra", function(request,response) {
+    app.get("/mostrartarjeta/:idtarjeta", function(request,response) {
       //failed to fetch
    //   let tarjetaid = request.body.tarjetaid;
+
+      let idtarjeta = request.params.idtarjeta;
       connection.query(
         //aqui es donde tiene que venir el id de la tarjeta guardada antes.
-        `select numerotarjeta from formadepago where id = 1 `,
+        `select numerotarjeta from formadepago where id = ${idtarjeta}`,
         function(error,result,fields) {
           if (error) {
             response.status(400).send(`error ${error.message}`);
+            return;
           }
         response.send(result[0].numerotarjeta);
         console.log(result);
@@ -120,12 +127,34 @@ connection.connect(function(error) {
 
     });
 
-    app.post("/finalizarcompra",  function(request,response) {
+   
+    app.post("/finalizarcompra", function(request,response) {
 
-      let 
-    })
 
-    
+      let nombre = request.body.nombre;
+      let apellidos = request.body.apellidos;
+      let telefono = request.body.telefono;
+      let email = request.body.email;
+      let calle = request.body.calle;
+      let numero = request.body.numero;
+      let provincia = request.body.provincia;
+      let CP = request.body.CP;
+      let pais = request.body.pais;
+
+      //console.log(numerotarjeta,titulartarjeta,tipotarjeta,caducidad,CVV,idusuario)
+      connection.query(
+         `INSERT into direccionenvio (nombre, apellidos, telefono, email,calle,numero, provincia,CP, pais,usuarioid) VALUES ("${nombre}","${apellidos}","${telefono}","${email}","${calle}","${numero}","${provincia}","${CP}","${pais}",5)`,
+          function(error,result,fields) {
+              if (error) {
+                console.log(error);
+                  response.status(400).send(`error ${error.message}`);
+                  return;
+                }
+         //   console.log(result) ;
+        response.send({message:"compra finalizada"});
+
+          });
+  });
 
 
 

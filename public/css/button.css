@@ -14,6 +14,15 @@ header #cantidad{
     justify-content: center;
     align-items: center;
 }
+.btn {
+    color:var(--primario-oscuro);
+    text-decoration: none;
+    display:inline-block;
+    border: 2px ;
+    padding: 16px 24px;
+    border-radius: 8px;
+    background-color: var(--gris);
+}
 
 .btn,#carrito{
     color:var(--primario-oscuro);
