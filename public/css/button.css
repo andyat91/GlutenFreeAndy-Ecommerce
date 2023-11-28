@@ -22,6 +22,7 @@ header #cantidad{
     padding: 16px 24px;
     border-radius: 8px;
     background-color: var(--gris);
+    font-weight: bold;
 }
 
 .btn,#carrito{

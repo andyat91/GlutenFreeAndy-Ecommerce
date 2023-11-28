@@ -12,3 +12,45 @@ header #logo{
 header h3{
     color: var(--negro);
 }
+
+
+.comprascarrito {
+    display:flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.comprascarrito .formadepago:hover,.realizarpedido:hover {
+    cursor: not-allowed;
+    background-color: var(--gris);
+} 
+
+
+
+.finalizarcarrito {
+    display:flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.finalizarcarrito .formadepago:hover,.carritofin:hover {
+    cursor: not-allowed;
+    background-color: var(--gris);
+} 
+
+
+
+.carritoformadepago {
+    display:flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.carritoformadepago .carritofin3:hover,.realizarpedido3:hover {
+    cursor: not-allowed;
+    background-color: var(--gris);
+} 
+

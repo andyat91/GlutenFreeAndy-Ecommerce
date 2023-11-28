@@ -1,0 +1,47 @@
+.seguircomprando {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  
+  
+  .seguircomprando h3{
+    margin:0px;
+  }
+  
+  .direccionenvio {
+    display: flex;
+    flex-direction: column;
+    
+  
+  }
+  .direccionenvio .pais{
+    width: 80%;
+  }
+  
+  .direccionenvio .form{
+    display: flex;
+  
+  }
+  .direccionenvio .form div {
+    display: flex;
+    flex-direction: column;
+  }
+  .direccioncaja {
+    display: flex;
+  }
+  #compraid h5 {
+    margin: 0px;
+  }
+  
+  #compraid .cantidadfor {
+    color:var(--primario-oscuro);
+    text-decoration: none;
+    display:inline-block;
+    border: 2px ;
+    padding: 8px 8px;
+    border-radius: 8px;
+    background-color: white;
+    font-weight: bold;
+  }

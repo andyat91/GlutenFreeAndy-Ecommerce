@@ -22,10 +22,10 @@ let compraid = 5;
             for(i=0 ; i<json.length ; i++) {
                 containercompra.innerHTML +=`  <div>
                 <img src="..${json[i].foto}" alt="logo" width="10%" />
-          <h4>${json[i].nombre}</h4>
+          <h5>${json[i].nombre}</h5>
           <h5 class="m-color">${json[i].precio}  <i class="bi bi-cash-coin"></i></h5> 
-          <h5>Cantidad : ${json[i].cantidad} </h5>>
-          <input type="number" />
+          <h5>Cantidad : ${json[i].cantidad} </h5>
+          <input type="number" class="cantidadfor" />
             </div>`
              
             suma += json[i].precio * json[i].cantidad;

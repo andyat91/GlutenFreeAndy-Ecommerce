@@ -20,19 +20,21 @@
 <link rel="stylesheet" href="../CSS/form.css"/>
 <link rel="stylesheet" href="../CSS/jumbotron.css"/>
 <link rel="stylesheet" href="../CSS/footer.css"/>
+<link rel="stylesheet" href="../CSS/finalizarcompra.css"/>
 </head>
 <body >
+  <header class="wrap finalizarcarrito">
+    <h3><b><span id="logo"><i class="bi bi-globe-americas"></i></span>Gluten<span id="logo">Free</span>Andy</b></h3>
   
-<header>
-  <h3><b><span id="logo"><i class="bi bi-globe-americas"></i></span>Gluten<span id="logo">Free</span>Andy</b></h3>
-    <div>
-      <button>
-      <h5><a href="carrito3.html" class="btn">Carrito</a></h5></button>
-      <button class="btn">Forma de pago</button>
-      <button class="btn">Realizar pedido</button>
-    </div>  
-</header>
-<main>
+      <div>    
+          <button class="btn carritofin">Carrito</button>
+          <i class="bi bi-arrow-right-circle"></i>
+        <button class="btn formadepago">Forma de pago</button>
+        <i class="bi bi-arrow-right-circle"></i>
+        <button class="btn realizarpedido2">Realizar pedido</button>
+      </div>  
+  </header>
+<main class="wrap">
             <h3>Finalizar compra</h3>
 
             <div id="tarjetaselect">
@@ -40,21 +42,29 @@
             </div>
 
             <a href="pasareladepago.html" >Cambiar metodo de pago</a>
-            <div>
+            <h3>Direccion de envio</h3>
 
-              <form>
-                <input type="text"  placeholder="Nombre" id="nombre"/>
-                <input type="text"  placeholder="apellidos" id="apellidos"/>
-                <input type="text"  placeholder="telefono" id="telefono"/>
-                <input type="text"  placeholder="email" id="email"/>
-                <input type="text" placeholder="calle" id="calle"/>
-                <input type="text"  placeholder="numero" id="numero"/>
-                <input type="text"  placeholder="provincia" id="provincia"/>
-                <input type="text"  placeholder="CP" id="CP"/>
-                <input type="text" placeholder="pais" id="pais"/>
-                         
+      <div class="direccioncaja">
+            <div class="direccionenvio" >
+              
+              <form class="form">
+                <div>
+                <input type="text"   class="input" placeholder="Nombre" id="nombre"/>
+                <input type="text" class="input" placeholder="telefono" id="telefono"/>
+                <input type="text" class="input" placeholder="calle" id="calle"/>
+                <input type="text" class="input" placeholder="provincia" id="provincia"/>
+              </div>
+              <div>
+                <input type="text"  class="input" placeholder="apellidos" id="apellidos"/>
+                <input type="text" class="input" placeholder="email" id="email"/>
+                <input type="text" class="input" placeholder="numero" id="numero"/>
+                <input type="text" class="input" placeholder="CP" id="CP"/>
+              </div>   
               </form>
-              <button onclick="utilizarDireccion()">Utiliza esta dirección</button>
+              <div>
+              <input type="text" class="input pais" placeholder="pais" id="pais"/>
+              <button class="btn" onclick="utilizarDireccion()">Utiliza esta dirección</button>
+            
             </div>
             <div>
               <img src="../Images/Glutenfree1.jpg.jpg" alt="logo" width="10%"/>
@@ -66,18 +76,24 @@
               <h4>Descuento del 10% en siguientes compras</h4>
               <h5>Por compra superior a 30€</h5>
             </div>
-
+          </div>
+        <div> 
+          <div class="caja" id="compraid">
+          </div>
+          <div>
             <div class="caja" id="compraid">
-              </div>
-
+            </div>
+            </div> 
               <div class="caja" id="caja">
-              <h4>TOTAL</h4>
-              <h4>7,95€</h4>
-              <form>
-                <button><a href="pasareladepago.html"></a>Finalizar compra</button>
-              </form>
+                <h4>TOTAL</h4>
+                  <h4>7,95€</h4>
+                   <button><a href="pasareladepago.html"></a>Finalizar compra</button>
               </div> 
             </div>
+          </div>
+        </div>
+          
+            
 
             <section class="wrap garantia">
         
