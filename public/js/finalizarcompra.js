@@ -65,5 +65,32 @@ console.log(nombre,apellidos,telefono,email,calle,numero,provincia,CP,pais);
     
     })
 }
+//REALIZAR PAGO REALIZADO CON EXITO Y CAMBIAR EL ESTADO DE COMPRA A 1 funcion en boton que haga un update de compras.estado
+
+
+function pagoFinal() {
+
+    let compraid = 5;
+
+    fetch(`/pagofinal/${compraid}`, {
+        method:"POST",
+        headers: {
+        "Content-Type":"application/json"
+    },
+    
+
+    }).then(function(response) {
+        return response.json()
+        
+
+
+    }).then(function(json) {
+        alert(json.message);
+
+    }).catch(function(error) {
+        console.log(error.message);s
+    })
+}
+
 
 

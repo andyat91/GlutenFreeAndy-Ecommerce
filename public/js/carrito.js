@@ -20,7 +20,7 @@ let compraid = 5;
         let suma=0;
        
             for(i=0 ; i<json.length ; i++) {
-                containercompra.innerHTML +=`  <div>
+                containercompra.innerHTML +=`  <div class="card cardcarrito">
                 <img src="..${json[i].foto}" alt="logo" width="10%" />
           <h5>${json[i].nombre}</h5>
           <h5 class="m-color">${json[i].precio}  <i class="bi bi-cash-coin"></i></h5> 
@@ -36,7 +36,7 @@ let compraid = 5;
          `<h4>Resumen de su compra</h4>
          <p>Continuar para proceder a la pasarela de pago</p>
          <h3 class="m-color">${suma} <i class="bi bi-cash-coin"></i></h3>
-         <a href="pasareladepago.html" class="btn">Proceder al pago</a>`  
+         <a href="/public/index.html" ><button class=btn onclick="pagoFinal()">Finalizar compra</button></a>`  
             console.log(suma)
     }).catch(function(error) {
         console.log(error)

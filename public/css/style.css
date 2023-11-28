@@ -83,5 +83,8 @@ main .opiniones .caja-destacada{
   text-align: center;
 }
 
-
+.cardcarrito {
+  display: flex;
+  width: 50%;
+}
 

@@ -40,7 +40,7 @@ connection.connect(function(error) {
                     response.status(400).send(`error ${error.message}`);
                     return;
                   }
-                  console.log(result);
+                  
                   response.send(result);
             });
         
@@ -93,7 +93,7 @@ connection.connect(function(error) {
         let caducidad = request.body.caducidad;
         let CVV = request.body.CVV;
         //console.log(numerotarjeta,titulartarjeta,tipotarjeta,caducidad,CVV,idusuario)
-        console.log(usuarioid);
+        
         connection.query(
             `insert into formadepago (numerotarjeta,titulartarjeta,tipotarjeta,caducidad,CVV,usuarioid) values ("${numerotarjeta}","${titulartarjeta}","${tipotarjeta}","${caducidad}","${CVV}","${usuarioid}")`,
             function(error,result,fields) {
@@ -151,11 +151,25 @@ connection.connect(function(error) {
                   return;
                 }
          //   console.log(result) ;
-        response.send({message:"compra finalizada"});
+        response.send({message:"Direccion registrada"});
 
           });
   });
 
+  app.post("/pagofinal/:compraid", function(request,response) {
+
+    let compraid = request.params.compraid;
+
+    connection.query(
+      `update compras set pagado=1 where id = "${compraid}"`,
+      function(error,result,fields) {
+        if (error) {
+          response.status(400).send(`error ${error.message}`);
+          return;
+        } 
+        response.send({message:"compra finalizada"});
+      });
+  });
 
 
 
