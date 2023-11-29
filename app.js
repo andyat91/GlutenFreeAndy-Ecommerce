@@ -177,24 +177,21 @@ connection.connect(function(error) {
   //crear dos querys una que grabe en compra nueva y me rellene compraid y precio y otra que inserte una vez que tengo caompraid inserte
   //inserte en compraproducto productoid y compraid;
 
-  app.get(`/compracarrito`, function(request,response) {
+//1º Que muestre las tarjetas tal cual con los productos.
 
-    //productos con su id que aparezcan en las tarjetas
-    //sacar tarjetas por un for
-  })
+app.get(`/productos`, function(request,response) {
 
-  app.post(`/compracarrito/:usuarioid`, function(request,response) {
-
-    let usuarioid= 5;
-
-    connection.query(
-      `insert into clientes ()`
-    )
-
-  })
-
-
-
+  connection.query(
+    `select * from productos`,
+    function(error,result,fields) {
+      if(error) {
+        response.status(400).send(`error ${error.message}`); 
+        return;
+      }
+      
+    response.send(result);
+    });
+})
 
 
 
