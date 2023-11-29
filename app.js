@@ -172,6 +172,27 @@ connection.connect(function(error) {
   });
 
 
+  //----Endpoints para crear o añadir compra-------------------------------------------------------------------------------------
+
+  //crear dos querys una que grabe en compra nueva y me rellene compraid y precio y otra que inserte una vez que tengo caompraid inserte
+  //inserte en compraproducto productoid y compraid;
+
+  app.get(`/compracarrito`, function(request,response) {
+
+    //productos con su id que aparezcan en las tarjetas
+    //sacar tarjetas por un for
+  })
+
+  app.post(`/compracarrito/:usuarioid`, function(request,response) {
+
+    let usuarioid= 5;
+
+    connection.query(
+      `insert into clientes ()`
+    )
+
+  })
+
 
 
 

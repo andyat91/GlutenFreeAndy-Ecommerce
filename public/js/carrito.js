@@ -36,7 +36,7 @@ let compraid = 5;
          `<h4>Resumen de su compra</h4>
          <p>Continuar para proceder a la pasarela de pago</p>
          <h3 class="m-color">${suma} <i class="bi bi-cash-coin"></i></h3>
-         <a href="/public/index.html" ><button class=btn onclick="pagoFinal()">Finalizar compra</button></a>`  
+         <a href="/index.html" ><button class=btn onclick="pagoFinal()">Finalizar compra</button></a>`  
             console.log(suma)
     }).catch(function(error) {
         console.log(error)
