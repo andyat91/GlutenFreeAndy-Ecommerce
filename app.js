@@ -172,7 +172,7 @@ connection.connect(function(error) {
   });
 
 
-  //----Endpoints para crear o añadir compra-------------------------------------------------------------------------------------
+  //----Endpoints para crear o añadir compra----------------------------------------------------------------------------------------------------------------------
 
   //crear dos querys una que grabe en compra nueva y me rellene compraid y precio y otra que inserte una vez que tengo caompraid inserte
   //inserte en compraproducto productoid y compraid;
@@ -181,6 +181,8 @@ connection.connect(function(error) {
 
 app.get(`/productos`, function(request,response) {
 
+
+
   connection.query(
     `select * from productos`,
     function(error,result,fields) {
@@ -188,16 +190,70 @@ app.get(`/productos`, function(request,response) {
         response.status(400).send(`error ${error.message}`); 
         return;
       }
-      
+ 
+    response.send(result);
+   
+    });
+});
+
+
+//2º insert usuarioid en compras
+
+app.post(`/nuevacompra/:usuarioid`, function(request,response) {
+
+
+  let usuarioid = request.params.usuarioid;
+
+  connection.query(
+    `INSERT INTO compras (usuarioid) VALUES (${usuarioid})`,
+    function(error,result,fields) {
+      if(error) {
+        response.status(400).send(`error ${error.message}`); 
+        return;
+      } 
     response.send(result);
     });
-})
+});
+
+//select del id de compra añadido antes
+
+app.get(`/nuevacompra`, function(request,response) {
+
+  let compraid=0;
+  connection.query(
+    `SELECT MAX(id) FROM compras`,
+    function(error,result,fields) {
+      if(error) {
+        response.status(400).send(`error ${error.message}`); 
+        return;
+      }
+      compraid = result;
+    response.send(compraid); 
+ 
+    });
+});
+
+//4º insert en compraproducto con el id de compra, el producto y la cantidad
+app.post(`/compraproducto`, function(request,response) {
+
+  let compraid =request.body.compraid;
+  let productoid =request.body.productoid;
+  let cantidad =request.body.cantidad;
+
+  connection.query(
+    `insert INTO compraproducto (compraid,productoid,cantidad) VALUES (${compraid},${productoid},${cantidad})`,
+    function(error,result,fields) {
+      if(error) {
+        response.status(400).send(`error ${error.message}`); 
+        return;
+      }
+      response.send(result); 
+    });
+
+});
 
 
-
-
-
-
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------
 app.listen(8000, function () {
     console.log("API up and running")
 });

@@ -88,7 +88,7 @@ function pagoFinal() {
         alert(json.message);
 
     }).catch(function(error) {
-        console.log(error.message);s
+        console.log(error.message);
     })
 }
 
