@@ -198,7 +198,7 @@ app.get(`/productos`, function(request,response) {
 
 
 //2º insert usuarioid en compras
-
+//Select del id de la nueva compra
 app.post(`/nuevacompra/:usuarioid`, function(request,response) {
 
 
@@ -215,27 +215,13 @@ app.post(`/nuevacompra/:usuarioid`, function(request,response) {
     });
 });
 
-//select del id de compra añadido antes
 
-app.get(`/nuevacompra`, function(request,response) {
 
-  let compraid=0;
-  connection.query(
-    `SELECT MAX(id) FROM compras`,
-    function(error,result,fields) {
-      if(error) {
-        response.status(400).send(`error ${error.message}`); 
-        return;
-      }
-      compraid = result;
-    response.send(compraid); 
- 
-    });
-});
 
-//4º insert en compraproducto con el id de compra, el producto y la cantidad
-app.post(`/compraproducto`, function(request,response) {
+//3º insert en compraproducto con el id de compra, el producto y la cantidad
+app.post(`/compraproducto/:usuarioid`, function(request,response) {
 
+  let usuarioid = request.params.usuarioid;
   let compraid =request.body.compraid;
   let productoid =request.body.productoid;
   let cantidad =request.body.cantidad;

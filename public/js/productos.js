@@ -51,8 +51,13 @@ function productosCard() {
 
 function addProducto(productoid) {
 
-    let usuarioid = 5;
+let usuarioid = 5;
+let cantidad = 1;
 
+//if dentro de añadir al carrito para ver si tiene ya compraid o no.
+//AQUI LE DIGO SI EL LOCALSTORAGE DE COMPRAID ESTA VACIO Y ME DEVUELVE NULL METO TODO EL CODIGO DE ABAJO Y SINO (mirar)
+  //Fetch metido uno dentro de otro EL QUE DEPENDE DEL OTRO VA DENTRO 
+  
     fetch(`http://localhost:8000/nuevacompra/${usuarioid}`, {
         method:"POST",
         headers: {
@@ -65,27 +70,35 @@ function addProducto(productoid) {
         
 
     }).then(function(json) {
-        alert(json.message);
+        alert(json.insertId);
+        //obtiene el id de la compranueva mediante lo que devuelve del SQL
+        
+   //AQUI VA UN LOCALSTORAGE con el id de compras
+       
 
-    }).catch(function(error) {
-        console.log(error.message);
-
-    })
-
-    fetch(`http://localhost:8000/nuevacompra`
+        fetch(`http://localhost:8000/compraproducto/${usuarioid}`,  {
+            method:"POST",
+            headers: {
+            "Content-Type":"application/json"
+            },
+        body: JSON.stringify({usuarioid:usuarioid , compraid:json.insertId , productoid:productoid , cantidad:cantidad})
     
-    ).then(function(response) {
-        return response.json()
-//recuperar id
-    }).then(function(json) {
-        console.log(json)
-        console.log(json[0])
-        localStorage.setItem("compraid",json[0])
-
-        let prueba = localStorage.getItem("compraid");
-        console.log(prueba);
+    
+        }).then(function(response) {
+            return response.json()
+    
+    
+        }).then(function(json) {
+            console.log(json)
+    
+        }).catch(function(error) {
+            console.log(error)
+    
+        });
     }).catch(function(error) {
         console.log(error.message);
 
-    })
+    });
+
+
 };
