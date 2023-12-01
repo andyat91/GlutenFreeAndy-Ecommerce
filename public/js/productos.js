@@ -56,8 +56,13 @@ let cantidad = 1;
 
 //if dentro de añadir al carrito para ver si tiene ya compraid o no.
 //AQUI LE DIGO SI EL LOCALSTORAGE DE COMPRAID ESTA VACIO Y ME DEVUELVE NULL METO TODO EL CODIGO DE ABAJO Y SINO (mirar)
+
+ let comprobacion  = localStorage.getItem("compraid");
+
+    if(comprobacion == null) {
+
+
   //Fetch metido uno dentro de otro EL QUE DEPENDE DEL OTRO VA DENTRO 
-  
     fetch(`http://localhost:8000/nuevacompra/${usuarioid}`, {
         method:"POST",
         headers: {
@@ -71,9 +76,9 @@ let cantidad = 1;
 
     }).then(function(json) {
         alert(json.insertId);
-        //obtiene el id de la compranueva mediante lo que devuelve del SQL
+        //obtiene el id de la compranueva mediante lo que devuelve de MySQL
         
-   //AQUI VA UN LOCALSTORAGE con el id de compras
+        localStorage.setItem("compraid",json.insertId)
        
 
         fetch(`http://localhost:8000/compraproducto/${usuarioid}`,  {
@@ -100,5 +105,45 @@ let cantidad = 1;
 
     });
 
+    } else {
+
+        let compraid = localStorage.getItem("compraid");
+
+        fetch(`http://localhost:8000/compraproducto/${usuarioid}`,  {
+            method:"POST",
+            headers: {
+            "Content-Type":"application/json"
+            },
+        body: JSON.stringify({usuarioid:usuarioid , compraid:compraid, productoid:productoid , cantidad:cantidad})
+    
+    
+        }).then(function(response) {
+            return response.json()
+    
+    
+        }).then(function(json) {
+            console.log(json)
+    
+        }).catch(function(error) {
+            console.log(error)
+    
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    }
 
 };

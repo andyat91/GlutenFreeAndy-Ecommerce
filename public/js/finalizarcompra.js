@@ -71,6 +71,9 @@ console.log(nombre,apellidos,telefono,email,calle,numero,provincia,CP,pais);
 function pagoFinal() {
 
     let compraid = 5;
+    localStorage.removeItem("compraid");
+    localStorage.removeItem("numerotarjeta");
+
 
     fetch(`/pagofinal/${compraid}`, {
         method:"POST",

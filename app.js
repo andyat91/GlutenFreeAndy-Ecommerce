@@ -205,7 +205,7 @@ app.post(`/nuevacompra/:usuarioid`, function(request,response) {
   let usuarioid = request.params.usuarioid;
 
   connection.query(
-    `INSERT INTO compras (usuarioid) VALUES (${usuarioid})`,
+    `INSERT INTO compras (usuarioid,pagado) VALUES (${usuarioid},0)`,
     function(error,result,fields) {
       if(error) {
         response.status(400).send(`error ${error.message}`); 
