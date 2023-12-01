@@ -4,7 +4,7 @@ window.addEventListener("load",compras());
 function compras() {
 
 
-let compraid = 5;
+    let compraid = localStorage.getItem("compraid");
 
 //al poner el url en el nav no me dirige al carrito mas el producto, solo a el array
     fetch(`${host}/carrito/${compraid}`
@@ -36,7 +36,7 @@ let compraid = 5;
          `<h4>Resumen de su compra</h4>
          <p>Continuar para proceder a la pasarela de pago</p>
          <h3 class="m-color">${suma} <i class="bi bi-cash-coin"></i></h3>
-         <a href="/index.html" ><button class=btn onclick="pagoFinal()">Finalizar compra</button></a>`  
+         <a href="/html/pasareladepago.html" ><button class=btn onclick="pagoFinal()">Finalizar compra</button></a>`  
             console.log(suma)
     }).catch(function(error) {
         console.log(error)

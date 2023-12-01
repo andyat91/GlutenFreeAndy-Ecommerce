@@ -238,6 +238,65 @@ app.post(`/compraproducto/:usuarioid`, function(request,response) {
 
 });
 
+//-----Endpoints para login y registro---------------------------------------------------------------------------------------------------------------------------
+
+
+app.post("/login", function (request, response) {
+  //Creamos una variable donde se va a hacer el request.query para poner menos cosas en el connection query
+  const email = request.body.email;
+  const password = request.body.password;
+  console.log(email, password);
+  //consulta con usuarios
+  //select * usuarios donde el email es igual al que ponemos en request y contraseña igual
+  //connection.query tiene una funcion dentro, si error mostrar mensaje y si ok realizar consulta.
+  //Mysql necesita doble comillas para poner dentro una var.
+  connection.query(
+    `select id from usuario where email = "${email}" and password = "${password}"`,
+    function (error, result, fields) {
+      if (error) {
+        response.status(400).send(`error ${error.message}`);
+        return;
+      }
+      //recorreme el array y si no hay ninguna coincidencia entre email y contraseña devuelve "email o contraseña mal"
+      if (result.length == 0) {
+        response.send({ message: "email o contraseña mal" });
+        //si encuentra una coincidencia de ambos se loguea.
+      } else {
+        console.log(result);
+        response.send({ message: "logueado" });
+      }
+    });
+});
+
+app.post(`/loginok`, function(request,response) {
+
+  const email = request.body.email;
+
+  connection.query(
+    `select id from usuario where email ="${email}" `,
+    function(error,result,fields) {
+      if (error) {
+        response.status(400).send(`error ${error.message}`);
+        return;
+      }
+    response.send(result);
+    });
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------
 app.listen(8000, function () {

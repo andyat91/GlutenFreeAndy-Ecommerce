@@ -70,9 +70,9 @@ console.log(nombre,apellidos,telefono,email,calle,numero,provincia,CP,pais);
 
 function pagoFinal() {
 
-    let compraid = 5;
-    localStorage.removeItem("compraid");
-    localStorage.removeItem("numerotarjeta");
+    let compraid = localStorage.getItem("compraid");
+    
+    
 
 
     fetch(`/pagofinal/${compraid}`, {
@@ -89,10 +89,22 @@ function pagoFinal() {
 
     }).then(function(json) {
         alert(json.message);
+        if(json.message == "compra finalizada") {
+            localStorage.removeItem("numerotarjeta");
+            localStorage.removeItem("usuarioid");
+            localStorage.removeItem("compraid");
+            window.location.href ="/index.html";
+            
+        } else {
+            alert("Compra no realizada");
+            window.location.href ="/html/finalizarcompra.html";
+
+        }
 
     }).catch(function(error) {
         console.log(error.message);
     })
+
 }
 
 

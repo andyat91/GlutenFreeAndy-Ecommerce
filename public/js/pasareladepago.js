@@ -3,7 +3,7 @@ window.addEventListener("load",formadepago());
 
 function formadepago() {
 
-    let usuarioid = 5;
+    let usuarioid = localStorage.getItem("usuarioid");
 
 
     fetch(`http://localhost:8000/pasareladepago/${usuarioid}`
@@ -30,7 +30,7 @@ function formadepago() {
 
 function addCard() {
 
-    let usuarioid = 5;
+    let usuarioid = localStorage.getItem("usuarioid");
 
 //falta arreglar idusuario 
     const numerotarjeta = document.getElementById("numerotarjeta").value;

@@ -7,7 +7,7 @@
 .descripcion img {
     margin-right: 64px;
     border-radius: 16px;
-    width: 50%;
+    width: 40%;
       
 }
 .descripcion .producto-desc{
@@ -15,14 +15,11 @@
     width: 100%;  
       
 }
-.descripcion input {
-    font-family: 'Inder', sans-serif;
-    font-size: 16px;
-    padding: 16px 1px 16px 8px;
-    border-radius: 8px;
-    border-color: 2px solid var(--gris);
-    margin: 0px;
+
+.descripcion .btn{
+ padding-right: 160px;
 }
+
 .precio {
     margin-bottom: 8px;
    color: var(--primario-oscuro)
