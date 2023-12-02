@@ -24,3 +24,40 @@
     margin-bottom: 8px;
    color: var(--primario-oscuro)
 }
+.caracteristicasespecificaciones {
+    display: flex;
+    margin-top: 48px;
+
+}
+#especificaciones {
+    width: 100%;
+}
+.opiniondescripcion {
+    display: flex;
+    margin-top: 48px;
+    margin-bottom: 64px;
+}
+
+.cajadescripcion {
+    padding: 40px;
+    border: 2px solid var(--primario-claro);
+    border-radius: 16px; 
+}
+.nocaja {
+    width: 100%;
+    padding-right: 64px;
+}
+.nocaja h3 {
+    margin-top: 16px;
+}
+.cajadescripcion .estrellas {
+    text-align: right;
+    color: var(--resalto);
+}
+.cajadescripcion .estrellas i:hover {
+    color:var(--primario-claro);
+}
+.cajadescripcion h5 {
+    color:var(--negro);
+}
+

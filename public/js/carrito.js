@@ -24,11 +24,12 @@ function compras() {
                 <img src="..${json[i].foto}" alt="logo" width="10%" />
           <h5>${json[i].nombre}</h5>
           <h5 class="m-color">${json[i].precio}  <i class="bi bi-cash-coin"></i></h5> 
-          <h5>Cantidad : ${json[i].cantidad} </h5>
+          <h5>Cantidad : ${json[i].cantidades} </h5>
           <input type="number" class="cantidadfor" />
             </div>`
              
-            suma += json[i].precio * json[i].cantidad;
+            suma += json[i].precio * json[i].cantidades;
+            localStorage.setItem("cantidad",cantidad);
             }
          suma = parseFloat(suma.toFixed(2));
          const containercaja = document.getElementById("caja");
@@ -38,6 +39,7 @@ function compras() {
          <h3 class="m-color">${suma} <i class="bi bi-cash-coin"></i></h3>
          <a href="/html/pasareladepago.html" ><button class=btn onclick="pagoFinal()">Finalizar compra</button></a>`  
             console.log(suma)
+        localStorage.setItem("preciofinal",suma);
     }).catch(function(error) {
         console.log(error)
 

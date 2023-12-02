@@ -34,8 +34,8 @@ connection.connect(function(error) {
     const compraid = request.params.compraid;
       
         connection.query(
-            `SELECT productos.nombre,productos.precio,compraproducto.cantidad,productos.foto FROM compras JOIN compraproducto ON compras.id = compraproducto.compraid
-            JOIN productos ON productos.id = compraproducto.productoid WHERE compras.id ="${compraid}"`, function(error,result,fields) {
+            `SELECT productos.nombre,productos.precio,productos.foto,SUM(compraproducto.cantidad) as cantidades FROM compras JOIN compraproducto ON compras.id = compraproducto.compraid
+            JOIN productos ON productos.id = compraproducto.productoid WHERE compras.id ="${compraid}" GROUP BY productos.nombre`, function(error,result,fields) {
                 if (error) {
                     response.status(400).send(`error ${error.message}`);
                     return;
@@ -159,9 +159,12 @@ connection.connect(function(error) {
   app.post("/pagofinal/:compraid", function(request,response) {
 
     let compraid = request.params.compraid;
+    let preciofinal = request.body.preciofinal;
+    let direccionenvio =request.body.direccionenvio;
+    let tarjeta = request.body.tarjeta;
 
     connection.query(
-      `update compras set pagado=1 where id = "${compraid}"`,
+      `update compras set pagado=1,preciofinal =${preciofinal},direccionenvio="${direccionenvio}",tarjeta="${tarjeta}" where id = "${compraid}"`,
       function(error,result,fields) {
         if (error) {
           response.status(400).send(`error ${error.message}`);
@@ -233,7 +236,7 @@ app.post(`/compraproducto/:usuarioid`, function(request,response) {
         response.status(400).send(`error ${error.message}`); 
         return;
       }
-      response.send(result); 
+      response.send({message:"Añadido al carrito"}); 
     });
 
 });
@@ -282,6 +285,26 @@ app.post(`/loginok`, function(request,response) {
     response.send(result);
     });
 
+});
+
+//------Registro
+
+app.post(`/registro`, function(request,response) {
+
+  let nombre= request.body.nombre;
+  let apellidos = request.body.apellidos;
+  let email = request.body.email;
+  let password = request.body.password;
+
+  connection.query(
+    `insert into usuario (nombre,apellidos,email,password) values ("${nombre}","${apellidos}","${email}","${password}")`,
+    function(error,result,fields) {
+      if (error) {
+        response.status(400).send(`error ${error.message}`);
+        return;
+      }  
+    response.send(result);
+    });
 })
 
 

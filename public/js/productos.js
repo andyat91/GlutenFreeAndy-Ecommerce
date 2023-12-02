@@ -51,7 +51,7 @@ function productosCard() {
 
 function addProducto(productoid) {
 
-let usuarioid = 5;
+let usuarioid = localStorage.getItem("usuarioid");
 let cantidad = 1;
 
 //if dentro de añadir al carrito para ver si tiene ya compraid o no.
@@ -75,7 +75,7 @@ let cantidad = 1;
         
 
     }).then(function(json) {
-        alert(json.insertId);
+       
         //obtiene el id de la compranueva mediante lo que devuelve de MySQL
         
         localStorage.setItem("compraid",json.insertId)
@@ -95,6 +95,7 @@ let cantidad = 1;
     
         }).then(function(json) {
             console.log(json)
+            alert(json.message)
     
         }).catch(function(error) {
             console.log(error)

@@ -15,7 +15,7 @@ function selectCard() {
     
     }).then (function(json) {
         console.log(json)
-
+        localStorage.setItem("tarjeta",json);
         const containertarjeta = document.getElementById("tarjetaselect");
         containertarjeta.innerHTML = `Tarjeta seleccionada :${json}`;
 
@@ -40,8 +40,10 @@ function utilizarDireccion() {
     const provincia = document.getElementById("provincia").value; 
     const CP = document.getElementById("CP").value; 
     const pais = document.getElementById("pais").value;
-
-console.log(nombre,apellidos,telefono,email,calle,numero,provincia,CP,pais);
+    let direccionenvio = calle+" "+numero;
+    
+    localStorage.setItem("direccionenvio",direccionenvio);
+console.log(direccionenvio);
 
 
     fetch(`http://localhost:8000/finalizarcompra`, {
@@ -71,7 +73,9 @@ console.log(nombre,apellidos,telefono,email,calle,numero,provincia,CP,pais);
 function pagoFinal() {
 
     let compraid = localStorage.getItem("compraid");
-    
+    let preciofinal = localStorage.getItem("preciofinal");
+    let tarjeta = localStorage.getItem("tarjeta");
+    let direccionenvio = localStorage.getItem("direccionenvio");
     
 
 
@@ -80,7 +84,7 @@ function pagoFinal() {
         headers: {
         "Content-Type":"application/json"
     },
-    
+    body: JSON.stringify({preciofinal:preciofinal, direccionenvio:direccionenvio, tarjeta:tarjeta})
 
     }).then(function(response) {
         return response.json()
@@ -93,6 +97,9 @@ function pagoFinal() {
             localStorage.removeItem("numerotarjeta");
             localStorage.removeItem("usuarioid");
             localStorage.removeItem("compraid");
+            localStorage.removeItem("direccionenvio");
+            localStorage.removeItem("tarjeta");
+            localStorage.removeItem("preciofinal");
             window.location.href ="/index.html";
             
         } else {

@@ -51,3 +51,29 @@ fetch(`http://localhost:8000/login`, {
 })
 
 }
+function registro() {
+
+    const nombre = document.getElementById("nombreR").value;
+    const apellidos = document.getElementById("apellidosR").value;
+    const email = document.getElementById("emailR").value;
+    const password = document.getElementById("passwordR").value;
+
+    fetch(`http://localhost:8000/registro`,     {
+        method:"POST",
+        headers: {
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({nombre:nombre,apellidos:apellidos,email: email, password: password})
+
+    }).then(function(response) {
+        return response.json()
+
+    }).then(function(json) {
+        console.log(json);
+
+        localStorage.setItem("usuarioid",json.insertId);
+
+    }).catch(function(error) {
+        console.log(error.message);
+    })
+}
