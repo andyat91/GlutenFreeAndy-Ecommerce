@@ -29,7 +29,7 @@ function compras() {
             </div>`
              
             suma += json[i].precio * json[i].cantidades;
-            localStorage.setItem("cantidad",cantidad);
+            localStorage.setItem("cantidad",suma)
             }
          suma = parseFloat(suma.toFixed(2));
          const containercaja = document.getElementById("caja");

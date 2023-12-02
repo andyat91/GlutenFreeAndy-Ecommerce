@@ -305,7 +305,26 @@ app.post(`/registro`, function(request,response) {
       }  
     response.send(result);
     });
-})
+});
+
+//--------Endpoints para descripcion producto----------------------------------------------------------------------------------------------------------------------
+//El producto que aparece en descripcion se coge de la query de productos, aqui hay que hacer un join para las especificaciones
+
+app.get(`/especificacion/:productoid`, function(request,response) {
+
+  let productoid = request.params.productoid;
+
+
+  connection.query(
+    `SELECT * FROM productos JOIN especificacionproducto ON productos.id = especificacionproducto.idproducto JOIN especificacion ON especificacionproducto.idespecificacion = especificacion.id`,
+    function(error,result,fields) {
+      if (error) {
+        response.status(400).send(`error ${error.message}`);
+        return;
+      } 
+    response.send(result); 
+    });
+});
 
 
 
