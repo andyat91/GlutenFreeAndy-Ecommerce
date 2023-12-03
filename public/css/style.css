@@ -96,3 +96,12 @@ main .opiniones .caja-destacada{
 .seguircomprando h3 {
   margin: 0px;
 }
+.formadepagomain{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+.formadepagomain h3 {
+  margin: 0px;
+}

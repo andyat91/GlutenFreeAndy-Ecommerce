@@ -19,7 +19,7 @@ function formadepago() {
         const containertarjeta = document.getElementById("mistarjetas");
         containertarjeta.innerHTML = `<ul>`;
         for(i=0 ; i<json.length ; i++) {                                            
-            containertarjeta.innerHTML += `<li><button class="btn" onclick="selectCard('${json[i].id}')">${json[i].numerotarjeta}  Seleccionar esta tarjeta</button> </li>`
+            containertarjeta.innerHTML += `<li><button class="tarjeta" onclick="selectCard('${json[i].id}')"><h5><i class="bi bi-credit-card"></i>${json[i].numerotarjeta} <i class="bi bi-check2-circle"></i> </h5></button> </li>`
         }
         containertarjeta.innerHTML+=`</ul>`;
         

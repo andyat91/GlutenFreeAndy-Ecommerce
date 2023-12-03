@@ -24,3 +24,28 @@
     flex-direction: column;
     align-items: center;
 }
+.nuevatarjeta {
+    display: flex;
+    justify-content: space-between;
+}
+.nuevatarja .caja {
+    border: 2px solid var(--primario-claro);
+    border-radius: 16px;
+    padding-right: 80px;
+    padding-left: 80px;
+}
+#mistarjetas {
+   
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+.inputnueva {
+    display: flex;
+    flex-direction: column;
+}
+.inputnueva #numerotarjeta {
+    margin-top: 0px;
+}

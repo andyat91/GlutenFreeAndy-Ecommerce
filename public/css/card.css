@@ -93,3 +93,29 @@
   .cardcarrito .fotoproducto {
     display: flex;
   }
+
+  #mistarjetas li {
+    list-style-type: none;
+  }
+  #mistarjetas .tarjeta {
+    text-decoration: none;
+    border-radius: 8px;
+    color:var(--primario-oscuro);
+    border: 2px solid;
+    display:inline-block;
+    padding: 16px 80px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  
+  }
+  #mistarjetas .tarjeta:hover {
+    background-color: var(--primario-claro);
+
+  
+  }
+  #mistarjetas .tarjeta h5 {
+    margin: 0px;
+  }
+  .inputnueva {
+    width: 50%;
+  }
