@@ -1,11 +1,11 @@
 window.addEventListener("load",productosdescripcion());
 
 
-function productosdescripcion() {
+function productosdescripcion(productoid) {
 
 //let productoid = localStorage.getItem("producto");
 console.log(productoid);
-    fetch(`http://localhost:8000/productos`, 
+    fetch(`http://localhost:8000/productos/${productoid}`, 
     
     ).then(function(response) {
         return response.json()
@@ -69,7 +69,7 @@ console.log(productoid);
                </div>`
             }
         }
-localStorage.removeItem("producto");
+//localStorage.removeItem("producto");
     }).catch(function(error) {
         console.log(error);
 

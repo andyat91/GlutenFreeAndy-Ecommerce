@@ -102,7 +102,7 @@ connection.connect(function(error) {
                     return;
                   }
            //   console.log(result) ;
-           response.send({message:"compra finalizada"});
+           response.send({message:"Tarjeta añadida correctamente"});
 
             });
     });
@@ -140,10 +140,11 @@ connection.connect(function(error) {
       let provincia = request.body.provincia;
       let CP = request.body.CP;
       let pais = request.body.pais;
+      let usuarioid = request.body.usuarioid;
 
       //console.log(numerotarjeta,titulartarjeta,tipotarjeta,caducidad,CVV,idusuario)
       connection.query(
-         `INSERT into direccionenvio (nombre, apellidos, telefono, email,calle,numero, provincia,CP, pais,usuarioid) VALUES ("${nombre}","${apellidos}","${telefono}","${email}","${calle}","${numero}","${provincia}","${CP}","${pais}",5)`,
+         `INSERT into direccionenvio (nombre, apellidos, telefono, email,calle,numero, provincia,CP, pais,usuarioid) VALUES ("${nombre}","${apellidos}","${telefono}","${email}","${calle}","${numero}","${provincia}","${CP}","${pais}",${usuarioid})`,
           function(error,result,fields) {
               if (error) {
                 console.log(error);

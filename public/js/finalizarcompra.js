@@ -31,6 +31,7 @@ function selectCard() {
 
 function utilizarDireccion() {
 
+    let usuarioid = localStorage.getItem("usuarioid");
     const nombre = document.getElementById("nombre").value;
     const apellidos = document.getElementById("apellidos").value; 
     const telefono = document.getElementById("telefono").value; 
@@ -51,7 +52,7 @@ console.log(direccionenvio);
         headers: {
         "Content-Type":"application/json"
     },
-    body: JSON.stringify({nombre:nombre , apellidos:apellidos, telefono:telefono, email:email , calle:calle, numero:numero, provincia:provincia , CP:CP ,pais:pais})
+    body: JSON.stringify({nombre:nombre , apellidos:apellidos, telefono:telefono, email:email , calle:calle, numero:numero, provincia:provincia , CP:CP ,pais:pais , usuarioid:usuarioid})
     
     
     }).then(function(response) {
