@@ -1,7 +1,57 @@
 
-window.addEventListener("load",selectCard);
+window.addEventListener("load",finalizarCompras(),selectCard());
+
+function finalizarCompras() {
 
 
+    let compraid = localStorage.getItem("compraid");
+
+//al poner el url en el nav no me dirige al carrito mas el producto, solo a el array
+    fetch(`http://localhost:8000/carrito/${compraid}`
+    
+
+    ).then(function(response) {
+        return response.json()
+
+    }).then(function(json) {
+        console.log(json);
+
+        const containercompra = document.getElementById("compraidresumen");
+        let suma=0;
+       
+            for(i=0 ; i<json.length ; i++) {
+                containercompra.innerHTML +=`  <div class="cardcarrito">
+                                                <div class="fotoproducto">
+                                                    
+                                                    <div>
+                                                        <h5>${json[i].nombre}</h5>
+                                                        <p class="m-color">Precio: ${json[i].precio}  <i class="bi bi-cash-coin"></i></p> 
+                                                        <p >Cantidad : ${json[i].cantidades} </p>
+                                                    </div>
+                                                </div>
+                                                    <div>
+                                                        <button onclick="delete(${json[i].id})" class="btn" ><b><i class="bi bi-trash3"></i></b></button>
+                                                    </div>
+                                                </div>`
+             
+            suma += json[i].precio * json[i].cantidades;
+            localStorage.setItem("cantidad",suma)
+            }
+         suma = parseFloat(suma.toFixed(2));
+         const containercaja = document.getElementById("cajaresumen");
+         containercaja.innerHTML = 
+         `                              
+                                        <h4>Total</h4>
+                                        <h3 class="m-color">${suma} <i class="bi bi-cash-coin"></i></h3>
+                                        <button class=btn onclick="pagoFinal()">Finalizar compra</button>`  
+            console.log(suma)
+        localStorage.setItem("preciofinal",suma);
+    }).catch(function(error) {
+        console.log(error)
+
+    })
+
+};
 
 function selectCard() {
 
@@ -18,9 +68,6 @@ function selectCard() {
         localStorage.setItem("tarjeta",json);
         const containertarjeta = document.getElementById("tarjetaselect");
         containertarjeta.innerHTML = `Tarjeta seleccionada :${json}`;
-
-        console.log(containertarjeta);
-       
 
     }).catch(function(error) {
         console.log(error)
@@ -95,12 +142,13 @@ function pagoFinal() {
     }).then(function(json) {
         alert(json.message);
         if(json.message == "compra finalizada") {
-            localStorage.removeItem("numerotarjeta");
             localStorage.removeItem("usuarioid");
             localStorage.removeItem("compraid");
             localStorage.removeItem("direccionenvio");
+            localStorage.removeItem("numerotarjeta");
             localStorage.removeItem("tarjeta");
             localStorage.removeItem("preciofinal");
+            localStorage.removeItem("cantidad");
             window.location.href ="/index.html";
             
         } else {

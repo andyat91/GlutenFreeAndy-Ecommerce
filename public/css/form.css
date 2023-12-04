@@ -13,6 +13,7 @@
     border-radius: 8px;
     border-color: 1px solid var(--gris);
     margin-bottom: 16px;
+    width: 100%;
     
     } 
 .caja-destacada .block {

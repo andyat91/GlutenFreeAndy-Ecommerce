@@ -43,25 +43,26 @@
 
   <div class="nuevatarjeta">   
 
-   <div class="caja">
-    <h3>Mis tarjetas</h3>
+   <div class="cajaSeleccionTarjeta">
+    <h4>Mis tarjetas</h4>
     <div id="mistarjetas">
   </div> 
   <a href="finalizarcompra.html" class="btn">Pagar con esta tarjeta</a>
    </div> 
 
    <div class="inputnueva">
-    <h3>Añadir nueva tarjeta</h3>
+    <h4>Añadir nueva tarjeta</h4>
     <form>
         <input type="text" id="numerotarjeta" placeholder="Numero de tarjeta" class="input"/>
         <input type="text"  id="titulartarjeta" placeholder="Titular de la tarjeta" class="input"/>
         <input type="text" id="tipotarjeta" placeholder="Tipo de tarjeta" class="input"/>
+        <div>
         <input type="text"  id="caducidad" placeholder="Fecha de caducidad" class="input"/>
         <input type="text"  id="CVV" placeholder="CVV" class="input"/>
-     
+      </div>
         
     </form>
-    <button onclick="addCard()">Añadir tarjeta</button>
+    <button class="btn" onclick="addCard()">Añadir a mis tarjetas</button>
    </div>
 
   </div>  

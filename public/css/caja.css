@@ -24,28 +24,90 @@
     flex-direction: column;
     align-items: center;
 }
+/*PASARELA DE PAGO :*/
 .nuevatarjeta {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
 }
-.nuevatarja .caja {
+
+.nuevatarjeta .btn{
+display: inline-block;
+width: 94%;
+}
+
+.nuevatarjeta .cajaSeleccionTarjeta {
     border: 2px solid var(--primario-claro);
     border-radius: 16px;
-    padding-right: 80px;
-    padding-left: 80px;
-}
-#mistarjetas {
-   
+    padding: 40px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-   
+    margin-right: 32px;
 }
+
+
+#mistarjetas {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
 .inputnueva {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
+
+.inputnueva form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+}
+
+.inputnueva form div{
+    display: flex;
+}
+
+.inputnueva form .input {
+    padding: 8px;
+}
+
+.inputnueva form div .input{
+    width: 50%;
+   
+}
+
 .inputnueva #numerotarjeta {
     margin-top: 0px;
 }
+
+.inputnueva .btn {
+    width: 80%;
+}
+
+.resumendesucompra {
+    border: 2px solid var(--primario-claro);
+    border-radius: 16px;
+    padding: 40px;
+}
+
+#caja {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border: 2px solid var(--primario-claro);
+    border-radius: 16px;
+  }
+ #cajaresumen h3,p{
+    margin-top: 8px;
+    margin-bottom: 0px;
+ }
