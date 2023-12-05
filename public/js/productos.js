@@ -35,11 +35,13 @@ function productosCard() {
                                             <p>${json[i].descripcioncorta}</p>
                                         <div>
                                             <button onclick="addProducto(${json[i].id})" class="btn">Añadir al carrito</button>
-                                            <a href="/html/descripcion.html" class="btn" >VER</button></a>
+                                            <a href="/html/descripcion.html?productoid=${json[i].id}" class="btn" >VER</button></a>
+                                            
                                         </div>
                                         </div>  
                                         </div>`
         //    localStorage.setItem("producto",json[i].id)
+        //IMPORTANTE: Recibe por string el id del producto y se recoge en el JS
         }
     
         console.log(containerCard)

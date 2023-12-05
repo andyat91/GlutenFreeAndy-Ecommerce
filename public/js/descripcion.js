@@ -1,11 +1,15 @@
-window.addEventListener("load",productosdescripcion());
+window.addEventListener("load",productosdescripcion(),especificacion());
 
 
-function productosdescripcion(productoid) {
+function productosdescripcion() {
 
-//let productoid = localStorage.getItem("producto");
+//coge la ubicacion por parametros de 
+const params=new URLSearchParams(window.location.search);
+let productoid = params.get("productoid") ;
 console.log(productoid);
-    fetch(`http://localhost:8000/productos/${productoid}`, 
+
+localStorage.setItem("productoidE",productoid);
+    fetch(`http://localhost:8000/productos`, 
     
     ).then(function(response) {
         return response.json()
@@ -54,24 +58,39 @@ console.log(productoid);
                     </p>
                   </div>
                 </div>
-              
-            
-                      <div id="especificaciones">
-                        <ul>
-                          <li>singlute</li>
-                          <li>lactofree</li>
-                          <li>heuvofree</li>
-                          <li>vainilla</li>
-                          <li>frutossecos</li>
-                          <li></li>
-                        </ul>
-                      </div>
                </div>`
-            }
+         
+              }
         }
 //localStorage.removeItem("producto");
     }).catch(function(error) {
         console.log(error);
 
     })
+};
+
+function especificacion() {
+
+
+  let productoid = localStorage.getItem("productoidE");
+  console.log(productoid)
+
+  fetch(`http://localhost:8000/especificacion/${productoid}`,
+  
+  
+  ).then(function(response) {
+    return response.json()
+
+  }).then(function(json) {
+    console.log()
+
+      const especificacion = document.getElementById("especificaciones");
+      
+      for(i=0; i<json.length ; i++) {
+        especificacion.innerHTML += `<li>${json[i].texto}</li>`
+      }
+
+  }).catch(function(error) {
+    console.log()
+  })
 }

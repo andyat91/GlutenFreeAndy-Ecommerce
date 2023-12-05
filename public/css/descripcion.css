@@ -61,3 +61,10 @@
     color:var(--negro);
 }
 
+.caracteristicas {
+    margin-right: 48px;
+}
+
+.descripcionproducto {
+    display: flex;
+}

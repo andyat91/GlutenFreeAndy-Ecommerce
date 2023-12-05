@@ -24,3 +24,12 @@
 .garantia div div h5,h6{
     margin:0px;
 }
+
+.recomendados {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recomendados .btn {
+    width: 100%;
+}
