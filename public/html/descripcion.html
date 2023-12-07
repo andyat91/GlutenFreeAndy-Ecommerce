@@ -33,14 +33,14 @@
         <form>
           <input type="search" class="input" id="buscador" placeholder="busca tu producto"s/>
         </form>
-         <a class="relative" class="btn" href="carrito3.html" id="carrito"><b><i class="bi bi-bag-heart"></i> Carrito</b><span id="cantidad">5</span></a>
+         <a class="relative" class="btn" href="/html/carrito.html" id="carrito"><b><i class="bi bi-bag-heart"></i> Carrito</b><span id="cantidad">5</span></a>
       </div>
   </header>
   <nav>
     <div class="wrap">
         <div>
           <ul >
-            <li><a  href="login.html">Todos los productos</a></li>
+            <li><a  href="/index.html">Todos los productos</a></li>
             <li><a  href="https://www.google.es/">Sobre Nosotros</a></li>
             <li><a  href="https://www.google.es/">Contacto</a></li>
             <li><a  href="https://singluten.malaga.eu/">Málaga sin gluten</a></li>
@@ -50,7 +50,7 @@
         <div>
           <ul>
             <li><a  href="carrito3.html">Mis pedidos</a></li>
-            <li id="logout"><a  href="index.html">Logout</a></li>
+            <li id="logout"><a  href="/html/login.html">Logout</a></li>
           </ul>
         </div>
       </div>
@@ -73,15 +73,16 @@
       <p>Devoluciones aceptadas</p>
     </div>
   </div>
-  <div class="caracteristicasespecificaciones">
+</div>
+  <div class="caracteristicasespecificaciones"  >
     <div class="caracteristicas">
     
       <h4>Caracteristicas del producto</h4>
       <div>
      
-        <p><b><i class="bi bi-check2-circle"></i>
+        <p><b class ="nombre"><i class="bi bi-check2-circle"></i>
           Producto sin lactosa.</b>
-          <u>¿Qué es la lactosa y porque hace daño?</u> La lactosa es un tipo de
+          ¿Qué es la lactosa y porque hace daño? La lactosa es un tipo de
           azúcar que se encuentra en la leche y otros productos lácteos. El
           cuerpo necesita una enzima llamada lactasa para digerir la lactosa. La
           intolerancia a la lactosa se presenta cuando el intestino delgado no
@@ -90,29 +91,35 @@
       </div>
       <div>
        
-        <p><b><i class="bi bi-check2-circle"></i>
+         <p ><b class ="nombre"><i class="bi bi-check2-circle"></i>
           Producto sin huevo:</b>
           Algunos de los síntomas de la alergia al huevo son los siguientes:
           Inflamación de la piel o urticaria (la reacción más frecuente de la
           alergia al huevo) Congestión nasal, goteo de la nariz y estornudos
-          (rinitis alérgica) <u>Síntomas digestivos</u>, como cólicos, náuseas y
+          (rinitis alérgica) Síntomas digestivos, como cólicos, náuseas y
           vómitos.
         </p>
       </div>
       <div>
      
-        <p><b><i class="bi bi-check2-circle"></i>
+        <p><b class ="nombre"><i class="bi bi-check2-circle"></i>
           Producto sin Gluten:</b>La enfermedad celiaca es una enfermedad
-          digestiva que daña el intestino delgado y <u>altera la absorción de las
-          vitaminas, minerales y demás nutrientes</u> que contienen los alimentos.
+          digestiva que daña el intestino delgado y altera la absorción de las
+          vitaminas, minerales y demás nutrientes que contienen los alimentos.
         </p>
       </div>
+    
     </div>
+    <div class="nombreespecificaciones">
+    <h4>Especificaciones</h4>
+    <ul id="especificaciones">
+    </ul>
   </div>
-</div>
-  <div >
-    <ul id="especificaciones"></ul>
+
+    
   </div>
+
+
   
 <div class="opiniondescripcion">
   <div class="nocaja">
@@ -222,5 +229,6 @@
     </div>
 </footer>
 <script src="/js/descripcion.js"></script>
+<script src="/js/productos.js"></script>
 </body>
 </html>

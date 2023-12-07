@@ -2,23 +2,40 @@
     display: flex;
     justify-content: space-between;
     margin-top:64px;
+    margin-bottom: 64px;
 
 }
 .descripcion img {
     margin-right: 64px;
     border-radius: 16px;
-    width: 40%;
+    width: 38%;
       
 }
 .descripcion .producto-desc{
-    margin-top: 48px;
-    width: 100%;  
-      
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: end;
+    border: 2px solid;
+    border-radius: 16px;
+    width: 100%;
+    padding: 32px;  
+    border-color: var(--primario-claro);
+}
+.descripcion .producto-desc h3{
+    margin: 0px;
 }
 
 .descripcion .btn{
  padding-right: 160px;
+
 }
+.descripcion p{
+    color: var(--resalto)
+   }
+   .descripcion h5{
+    margin: 0%;
+   }
 
 .precio {
     margin-bottom: 8px;
@@ -32,6 +49,7 @@
 #especificaciones {
     width: 100%;
 }
+
 .opiniondescripcion {
     display: flex;
     margin-top: 48px;
@@ -62,9 +80,25 @@
 }
 
 .caracteristicas {
-    margin-right: 48px;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 24px;
+    border-right: 2px solid;
+    padding: 32px;
+    border-color: var(--primario-claro);
+}
+.nombreespecificaciones h4{
+    color: var(--resalto);
 }
 
+.caracteristicas .nombre{
+    color:var(--resalto)
+}
+.caracteristicas h4 {
+    margin-bottom: 32px;
+}
 .descripcionproducto {
     display: flex;
 }

@@ -26,30 +26,62 @@ function compras() {
                                                     <div>
                                                         <h5>${json[i].nombre}</h5>
                                                         <h5 class="m-color">${json[i].precio}  <i class="bi bi-cash-coin"></i></h5> 
-                                                        <h5>Cantidad : ${json[i].cantidades} </h5>
+                                                        
                                                     </div>
                                                 </div>
                                                     <div>
-                                                        <button onclick="delete(${json[i].id})" class="btn" ><b><i class="bi bi-trash3"></i></b></button>
+                                                    <div class="cantidadescarrito">
+                                                        <button onclick="addProducto(${json[i].id})" class="btn mas" ><b><i class="bi bi-plus-circle"></i></b></button>
+                                                        <h5 class="input" id="cantidades">${json[i].cantidades} </h5>
+                                                        <button onclick="restar(${json[i].id})" class="btn menos" ><b><i class="bi bi-dash-circle"></i></b></button>
+                                                        <button onclick="borrarProducto(${json[i].id})" class="btn delete" ><b><i class="bi bi-trash3"></i></b></button>
+                                                        </div>
+                                                        
                                                     </div>
                                                 </div>`
-             
+            
+             console.log(json[i].nombre);
             suma += json[i].precio * json[i].cantidades;
             localStorage.setItem("cantidad",suma)
             }
          suma = parseFloat(suma.toFixed(2));
          const containercaja = document.getElementById("caja");
-         containercaja.innerHTML = 
+         containercaja.innerHTML =      
+                                    
          `                              <h4>Resumen de su compra</h4>
                                         <p>Continuar para proceder a la pasarela de pago</p>
                                         <h3 class="m-color">${suma} <i class="bi bi-cash-coin"></i></h3>
                                         <a href="/html/pasareladepago.html" ><button class=btn onclick="pagoFinal()">Finalizar compra</button></a>`  
             console.log(suma)
         localStorage.setItem("preciofinal",suma);
+
+        
     }).catch(function(error) {
         console.log(error)
 
     })
 
 }
+function borrarProducto(productoid) {
+
+    compraid = localStorage.getItem("compraid");
+    console.log(productoid);
+
+    fetch(`http://localhost:8000/eliminarproducto`, {
+
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({compraid:compraid, productoid:productoid})
+    }).then(function(response) {
+        return response.json()
+
+    }).then(function(json) {
+        alert (json.message)
+
+    }).catch(function(error) {
+        console.log(error)
+    })
+};
 

@@ -60,6 +60,7 @@
   #compraid {
     display: flex;
     flex-direction: column;
+    margin-right: 16px;
 
     
   }
@@ -70,6 +71,7 @@
     border-color: var(--gris);
     padding-bottom: 16px;
     margin-bottom: 32px;
+    
     
   }
   .cardcarrito {
@@ -84,6 +86,34 @@
   .cardcarrito h5 {
     margin:0px;
     display: block;
+  }
+  .cantidadescarrito {
+    display: flex;
+  }
+  .cantidadescarrito .input {
+   padding: 8px;
+   background-color: var(--gris);
+   border-radius: 0px;
+  }
+  .cantidadescarrito .mas{
+    padding: 8px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .cantidadescarrito .menos{
+    padding: 8px;
+    border-radius: 0px;
+  }
+  .cantidadescarrito .delete{
+    padding: 8px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+  }
+  .cantidadescarrito .delete:hover{
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    background-color: #FF9999;
+    color: azure;
   }
   .compraresumen {
     display: flex;

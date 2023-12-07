@@ -28,6 +28,15 @@
 .recomendados {
     display: flex;
     justify-content: space-between;
+    border-top: 2px solid;
+    border-color: var(--primario-claro);
+    padding-top: 32px;
+    margin-bottom: 32px;
+}
+.card-recomendados{
+    width: 25%;
+    margin: 8px;
+
 }
 
 .recomendados .btn {

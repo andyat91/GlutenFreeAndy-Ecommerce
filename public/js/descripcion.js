@@ -22,44 +22,22 @@ localStorage.setItem("productoidE",productoid);
             if(json[i].id == productoid) {
 
                 container.innerHTML = ` <div class="descripcion">
-                <img src="${json[i].foto}" alt="Pan Rallado" width="30%" />
+                                            
+                                            <img src="${json[i].foto}" alt="Pan Rallado" width="30%" />
             
-                <div class="producto-desc">
-                  <h3>${json[i].nombre}</h3>
-                  <p>
-                  ${json[i].descripcioncorta}
-                  </p>
-                  <h4>${json[i].precio}€</h4>
+                                            <div class="producto-desc">
+                                            <p>Todos los productos    <i class="bi bi-arrow-right"></i>    Descripcion del producto   <i class="bi bi-arrow-right"></i> ${json[i].nombre} </p>
+                                              <h3>${json[i].nombre}</h3>
+                                              <h5>
+                                              ${json[i].descripcioncorta}
+                                              </h5>
+                                              <h4>Precio: ${json[i].precio}€ IVA Incluido</h4>
                  
-                  <button class="btn" onclick="addProducto(${json[i].id})">Añadir al carrito</button>
-                  <p>Devoluciones aceptadas</p>
-                </div>
-              </div>
-              <div class="caracteristicasespecificaciones">
-                <div class="caracteristicas">
-                
-                  <h4>Caracteristicas del producto</h4>
-                  <div>
-                 
-                    <p><i class="bi bi-check2-circle"></i>
-                    ${json[i].caracteristicas1}
-                    </p>
-                  </div>
-                  <div>
-                   
-                    <p><i class="bi bi-check2-circle"></i>
-                    ${json[i].caracteristicas2}
-                    </p>
-                  </div>
-                  <div>
-                 
-                    <p><i class="bi bi-check2-circle"></i>
-                    ${json[i].caracteristicas3}
-                    </p>
-                  </div>
-                </div>
-               </div>`
-         
+                                              <button class="btn" onclick="addProducto(${json[i].id})">Añadir al carrito</button>
+                                              <p>Devoluciones aceptadas <i class="bi bi-shield-fill-check"></i></p>
+                                            </div>
+                                        </div>`
+              console.log(json[i].id)
               }
         }
 //localStorage.removeItem("producto");
@@ -87,8 +65,9 @@ function especificacion() {
       const especificacion = document.getElementById("especificaciones");
       
       for(i=0; i<json.length ; i++) {
-        especificacion.innerHTML += `<li>${json[i].texto}</li>`
+        especificacion.innerHTML += `<li>${json[i].texto} </li>`
       }
+     
 
   }).catch(function(error) {
     console.log()

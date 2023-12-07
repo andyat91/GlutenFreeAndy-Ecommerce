@@ -149,6 +149,7 @@ function pagoFinal() {
             localStorage.removeItem("tarjeta");
             localStorage.removeItem("preciofinal");
             localStorage.removeItem("cantidad");
+            localStorage.removeItem("productoidE");
             window.location.href ="/index.html";
             
         } else {

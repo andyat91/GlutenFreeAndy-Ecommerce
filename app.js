@@ -34,7 +34,7 @@ connection.connect(function(error) {
     const compraid = request.params.compraid;
       
         connection.query(
-            `SELECT productos.nombre,productos.precio,productos.foto,SUM(compraproducto.cantidad) as cantidades FROM compras JOIN compraproducto ON compras.id = compraproducto.compraid
+            `SELECT productos.id,productos.nombre,productos.precio,productos.foto,SUM(compraproducto.cantidad) as cantidades FROM compras JOIN compraproducto ON compras.id = compraproducto.compraid
             JOIN productos ON productos.id = compraproducto.productoid WHERE compras.id ="${compraid}" GROUP BY productos.nombre`, function(error,result,fields) {
                 if (error) {
                     response.status(400).send(`error ${error.message}`);
@@ -237,10 +237,71 @@ app.post(`/compraproducto/:usuarioid`, function(request,response) {
         response.status(400).send(`error ${error.message}`); 
         return;
       }
-      response.send({message:"Añadido al carrito"}); 
+      response.send(result); 
+      
     });
 
 });
+
+
+//4º UPDATE compraproducto cantidades
+
+app.post(`/cantidad`, function(request,response) {
+
+  let productoid = request.body.productoid;
+  let compraid = request.body.compraid;
+
+  connection.query(
+    `UPDATE compraproducto SET cantidad = cantidad+1 WHERE compraid = ${compraid} AND productoid = ${productoid}`,
+    function(error,result,fields) {
+      if(error) {
+        response.status(400).send(`error ${error.message}`); 
+        return;
+      } 
+      response.send({message:"actualizado carrito"})
+    });
+})
+
+//5º DELETE algun producto del carrito
+
+app.delete(`/eliminarproducto`, function(request,response) {
+
+  let productoid=request.body.productoid;
+  let compraid=request.body.compraid;
+
+  connection.query(
+    `DELETE FROM compraproducto WHERE compraid = ${compraid} AND productoid = ${productoid}`,
+    function(error,result,fields) {
+      if(error) {
+        response.status(400).send(`error ${error.message}`); 
+        return;
+      }
+      response.send({message:"Producto eliminado"});
+    })
+
+});
+
+//6º actializar informacion sobre compra nueva
+
+ app.get(`/comprobar`,  function(request,response) {
+
+   let productoid = request.query.productoid;
+   let compraid = request.query.compraid;
+  console.log(productoid,compraid);
+   connection.query(
+    `SELECT id FROM compraproducto WHERE compraid=${compraid}  AND productoid =${productoid}`,
+    function(error,result,fields) {
+      if(error) {
+        response.status(400).send(`error ${error.message}`); 
+        return;
+      }
+      response.send(result);
+      console.log(result);
+    });
+ });
+
+
+
 
 //-----Endpoints para login y registro---------------------------------------------------------------------------------------------------------------------------
 
@@ -317,7 +378,7 @@ app.get(`/especificacion/:productoid`, function(request,response) {
 
 
   connection.query(
-    `SELECT especificacion.texto FROM productos JOIN especificacionproducto ON productos.id = especificacionproducto.idproducto JOIN especificacion ON especificacionproducto.idespecificacion = especificacion.id where productos.id = ${productoid}`,
+    `SELECT especificacion.texto,productos.caracteristicas1,productos.caracteristicas2,productos.caracteristicas3 FROM productos JOIN especificacionproducto ON productos.id = especificacionproducto.idproducto JOIN especificacion ON especificacionproducto.idespecificacion = especificacion.id where productos.id = ${productoid}`,
     function(error,result,fields) {
       if (error) {
         response.status(400).send(`error ${error.message}`);
