@@ -100,7 +100,7 @@ let cantidad = 1;
     
         }).then(function(json) {
             console.log(json)
-            
+        //    localStorage.setItem("compraproductoid",json.insertId)
     
         }).catch(function(error) {
             console.log(error)
@@ -115,20 +115,47 @@ let cantidad = 1;
 
     } else {//y si la compra ya esta creada  tiene que actualizar compraproducto si es el mismo producto y sino crear una nueva compraproducto
 
-        let compraid = localStorage.getItem("compraid");
+         let compraid = localStorage.getItem("compraid");
         console.log(compraid);
         console.log(productoid);
+        console.log(usuarioid);
         fetch(`http://localhost:8000/comprobar?compraid=${compraid}&productoid=${productoid}`, 
         
         
         ).then(function(response) {
             return response.json()
 
-        }).then(function(json) {
-            //MATAME CAMION
-            console.log(json[0].id);
-            if(json[0].id === undefined) {
 
+        }).then(function(json) {
+
+         // console.log(json[0].productoid);
+
+            if(json.length > 0) {
+            
+                    //matame round two
+                fetch(`http://localhost:8000/cantidad`, {
+                    method:"POST",
+                    headers: {
+                    "Content-Type":"application/json"
+                    },
+                body: JSON.stringify({usuarioid:usuarioid , compraid:compraid, productoid:productoid , cantidad:cantidad})
+
+
+                }).then(function(response) {
+                    return response.json()
+
+                }).then(function(json) {
+                    console.log(json)
+                   
+                }).catch(function(error) {
+                    console.log(error.message)
+                })
+                
+
+            } else {
+
+                console.log(compraid);
+                console.log(productoid);
                 fetch(`http://localhost:8000/compraproducto/${usuarioid}`,  {
                     method:"POST",
                     headers: {
@@ -143,33 +170,11 @@ let cantidad = 1;
             
                 }).then(function(json) {
                     console.log(json)
-            
+                  
                 }).catch(function(error) {
                     console.log(error)
             
                 });
-
-            } else {
-
-                console.log(compraid);
-                console.log(productoid);
-                fetch(`http://localhost:8000/cantidad`, {
-                    method:"POST",
-                    headers: {
-                    "Content-Type":"application/json"
-                    },
-                body: JSON.stringify({usuarioid:usuarioid , compraid:compraid, productoid:productoid , cantidad:cantidad})
-
-
-                }).then(function(response) {
-                    return response.json()
-
-                }).then(function(json) {
-                    console.log(json)
-
-                }).catch(function(error) {
-                    console.log(error.message)
-                })
             }
 
         }).catch(function(error) {
@@ -178,13 +183,10 @@ let cantidad = 1;
         })
 
    
-    }
+   }
 
    
 
 };
 
 
-function restar(productoid) {
-    
-}

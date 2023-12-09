@@ -32,10 +32,12 @@ connection.connect(function(error) {
 
 
     const compraid = request.params.compraid;
+    console.log(compraid)
       
         connection.query(
             `SELECT productos.id,productos.nombre,productos.precio,productos.foto,SUM(compraproducto.cantidad) as cantidades FROM compras JOIN compraproducto ON compras.id = compraproducto.compraid
-            JOIN productos ON productos.id = compraproducto.productoid WHERE compras.id ="${compraid}" GROUP BY productos.nombre`, function(error,result,fields) {
+            JOIN productos ON productos.id = compraproducto.productoid WHERE compras.id ="${compraid}" GROUP BY productos.nombre`,
+             function(error,result,fields) {
                 if (error) {
                     response.status(400).send(`error ${error.message}`);
                     return;
@@ -49,7 +51,8 @@ connection.connect(function(error) {
 
 
 //-----------------------------------------------------------------------------Endpoints Pasarela de pago------
-//Queremos mostrar los numeros de tarjeta asociado a su usuario mediante un for y por su id
+
+//Muestra datos de tarjeta del usuario, teniendo guardada la tarjeta y los muestra con asteriscos
 
     app.get(`/pasareladepago/:idusuario`, function(request,response) {
 
@@ -65,13 +68,13 @@ connection.connect(function(error) {
                   } //lo que quier aqui esque convierta el numero de tarjeta con asteriscos
                   for(let i=0 ; i<result.length ; i++) {
                     let asterisco = "";
+                    //con un for convertimos los primeros 12 numeros en asteriscos el resto es la numeracion de cada tarjeta
                     for( let j=0 ; j<result[i].numerotarjeta.length ; j++) {
                       if(j<12) {
                         asterisco += "*";
                       } else {
                         asterisco += result[i].numerotarjeta[j];
                       }
-                     // result[j].numerotarjeta = asterisco;
                     }
                     result[i].numerotarjeta = asterisco;
                 }
@@ -84,6 +87,7 @@ connection.connect(function(error) {
 
     });
 
+//insert para añadir nueva tarjeta
     app.post("/pasareladepago", function(request,response) {
 
         let usuarioid = request.body.usuarioid;
@@ -108,6 +112,7 @@ connection.connect(function(error) {
     });
 //------Endopoints para finalizar compra------------------------------------------------------------------------------------------------------------------------------------------------------
 
+//Nos muestra la tarjeta seleccionada
     app.get("/mostrartarjeta/:idtarjeta", function(request,response) {
       //failed to fetch
    //   let tarjetaid = request.body.tarjetaid;
@@ -127,7 +132,7 @@ connection.connect(function(error) {
 
     });
 
-   
+  //añade direccion  de envio 
     app.post("/finalizarcompra", function(request,response) {
 
 
@@ -157,6 +162,7 @@ connection.connect(function(error) {
           });
   });
 
+  //actualiza los datos de la compra nueva a pagados y añade direccion de envio y tarjeta
   app.post("/pagofinal/:compraid", function(request,response) {
 
     let compraid = request.params.compraid;
@@ -178,14 +184,13 @@ connection.connect(function(error) {
 
   //----Endpoints para crear o añadir compra----------------------------------------------------------------------------------------------------------------------
 
-  //crear dos querys una que grabe en compra nueva y me rellene compraid y precio y otra que inserte una vez que tengo caompraid inserte
+  //crear dos querys una que grabe en compra nueva y me rellene compraid y precio y otra que inserte una vez que tengo caompraid
   //inserte en compraproducto productoid y compraid;
 
+
+
 //1º Que muestre las tarjetas tal cual con los productos.
-
 app.get(`/productos`, function(request,response) {
-
-
 
   connection.query(
     `select * from productos`,
@@ -244,15 +249,15 @@ app.post(`/compraproducto/:usuarioid`, function(request,response) {
 });
 
 
-//4º UPDATE compraproducto cantidades
+//4º UPDATE compraproducto cantidades 
 
 app.post(`/cantidad`, function(request,response) {
 
   let productoid = request.body.productoid;
   let compraid = request.body.compraid;
-
+  let cantidad = request.body.cantidad
   connection.query(
-    `UPDATE compraproducto SET cantidad = cantidad+1 WHERE compraid = ${compraid} AND productoid = ${productoid}`,
+    `UPDATE compraproducto SET cantidad = cantidad +${cantidad} WHERE compraid = ${compraid} AND productoid = ${productoid}`,
     function(error,result,fields) {
       if(error) {
         response.status(400).send(`error ${error.message}`); 
@@ -262,12 +267,13 @@ app.post(`/cantidad`, function(request,response) {
     });
 })
 
-//5º DELETE algun producto del carrito
+//5º DELETE algun producto TODA LA CANTIDAD
 
 app.delete(`/eliminarproducto`, function(request,response) {
 
   let productoid=request.body.productoid;
   let compraid=request.body.compraid;
+ 
 
   connection.query(
     `DELETE FROM compraproducto WHERE compraid = ${compraid} AND productoid = ${productoid}`,
@@ -281,22 +287,42 @@ app.delete(`/eliminarproducto`, function(request,response) {
 
 });
 
-//6º actializar informacion sobre compra nueva
+//6º eliminar ultima linea donde compraid y producto id para que reduzca cantidad
+app.delete(`/reducircantidad`, function(request,response) {
+
+  let productoid=request.body.productoid;
+  let compraid=request.body.compraid;
+  let cantidad=request.body.cantidad;
+
+  connection.query(
+    `UPDATE compraproducto SET cantidad = cantidad -${cantidad} WHERE compraid = ${compraid} AND productoid = ${productoid}`,
+    function(error,result,fields) {
+      if(error) {
+        response.status(400).send(`error ${error.message}`); 
+        return;
+      } 
+      response.send({message:"actualizado carrito"})
+    });
+
+});
+
+//6º actualizar informacion sobre compra nueva 
 
  app.get(`/comprobar`,  function(request,response) {
 
    let productoid = request.query.productoid;
    let compraid = request.query.compraid;
-  console.log(productoid,compraid);
+
+
    connection.query(
-    `SELECT id FROM compraproducto WHERE compraid=${compraid}  AND productoid =${productoid}`,
+    `SELECT * FROM compraproducto where compraid=${compraid} and productoid=${productoid};`,
     function(error,result,fields) {
       if(error) {
         response.status(400).send(`error ${error.message}`); 
         return;
       }
       response.send(result);
-      console.log(result);
+     
     });
  });
 
@@ -314,7 +340,7 @@ app.post("/login", function (request, response) {
   //consulta con usuarios
   //select * usuarios donde el email es igual al que ponemos en request y contraseña igual
   //connection.query tiene una funcion dentro, si error mostrar mensaje y si ok realizar consulta.
-  //Mysql necesita doble comillas para poner dentro una var.
+
   connection.query(
     `select id from usuario where email = "${email}" and password = "${password}"`,
     function (error, result, fields) {

@@ -5,6 +5,7 @@ function compras() {
 
 
     let compraid = localStorage.getItem("compraid");
+    console.log(compraid)
 
 //al poner el url en el nav no me dirige al carrito mas el producto, solo a el array
     fetch(`${host}/carrito/${compraid}`
@@ -40,7 +41,7 @@ function compras() {
                                                     </div>
                                                 </div>`
             
-             console.log(json[i].nombre);
+         
             suma += json[i].precio * json[i].cantidades;
             localStorage.setItem("cantidad",suma)
             }
@@ -54,7 +55,7 @@ function compras() {
                                         <a href="/html/pasareladepago.html" ><button class=btn onclick="pagoFinal()">Finalizar compra</button></a>`  
             console.log(suma)
         localStorage.setItem("preciofinal",suma);
-
+        
         
     }).catch(function(error) {
         console.log(error)
@@ -64,7 +65,7 @@ function compras() {
 }
 function borrarProducto(productoid) {
 
-    compraid = localStorage.getItem("compraid");
+    let compraid = localStorage.getItem("compraid");
     console.log(productoid);
 
     fetch(`http://localhost:8000/eliminarproducto`, {
@@ -79,9 +80,34 @@ function borrarProducto(productoid) {
 
     }).then(function(json) {
         alert (json.message)
-
+        window.location.reload()
     }).catch(function(error) {
         console.log(error)
     })
 };
+//funcion restar
+function restar(productoid) {
+    
+let compraid = localStorage.getItem("compraid");
+let cantidad = 1;   
 
+    fetch(`http://localhost:8000/reducircantidad`, {
+        method:"POST",
+        headers: {
+        "Content-Type":"application/json"
+        },
+    body: JSON.stringify({compraid:compraid, productoid:productoid , cantidad:cantidad})
+
+
+    }).then(function(response) {
+        return response.json()
+
+    }).then(function(json) {
+        console.log(json.message);
+
+    }).then(function(error) {
+        console.log(error.message)
+    })
+
+
+}
