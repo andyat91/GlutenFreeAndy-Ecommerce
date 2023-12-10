@@ -242,7 +242,8 @@ app.post(`/compraproducto/:usuarioid`, function(request,response) {
         response.status(400).send(`error ${error.message}`); 
         return;
       }
-      response.send(result); 
+      response.send({message:"Producto nuevo añadido al carrito"}); 
+
       
     });
 
@@ -288,7 +289,7 @@ app.delete(`/eliminarproducto`, function(request,response) {
 });
 
 //6º eliminar ultima linea donde compraid y producto id para que reduzca cantidad
-app.delete(`/reducircantidad`, function(request,response) {
+app.post(`/reducircantidad`, function(request,response) {
 
   let productoid=request.body.productoid;
   let compraid=request.body.compraid;
@@ -415,7 +416,23 @@ app.get(`/especificacion/:productoid`, function(request,response) {
     });
 });
 
+//---Endpoint para mostrar span de carrito en index--------------------------------------------------------------------------------------------------------------------
 
+app.get(`/spancarrito`, function(request,response) {
+
+
+  let compraid= request.query.compraid;
+
+  connection.query(
+    `SELECT SUM(cantidad) as span FROM compraproducto WHERE compraid = ${compraid}`,
+    function(error,result,fields) {
+      if (error) {
+        response.status(400).send(`error ${error.message}`);
+        return;
+      } 
+    response.send(result);  
+    });
+});
 
 
 

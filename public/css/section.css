@@ -8,7 +8,7 @@
 }
 .garantia div{
     display: flex;
-    border-left: 1px solid;
+
     border-color: var(--gris);
    
 }
@@ -41,4 +41,9 @@
 
 .recomendados .btn {
     width: 100%;
+}
+.enviogratis {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }

@@ -13,13 +13,18 @@
   .direccionenvio {
     display: flex;
     flex-direction: column;
+    margin-right: 32px;
     
   
   }
   .direccionenvio .pais{
-    width: 80%;
+    width: 98%;
+    margin: 8px 8px;
   }
-  
+  .direccionenvio .btn{
+    width: 98%;
+    margin: 8px 8px;
+  }
   .direccionenvio .form{
     display: flex;
   
@@ -44,4 +49,20 @@
     border-radius: 8px;
     background-color: white;
     font-weight: bold;
+  }
+  .tarjetafinalizarcompra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 48px;
+  }
+
+  .tarjetafinalizarcompra h3,i,h5{
+    margin:0px;
+  }
+
+  .tarjetafinalizarcompra .btn {
+    padding: 8px;
+    margin-bottom: 8px;
   }

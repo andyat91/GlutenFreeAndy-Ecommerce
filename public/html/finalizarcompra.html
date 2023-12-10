@@ -35,14 +35,17 @@
       </div>  
   </header>
 <main class="wrap">
+  <div class="tarjetafinalizarcompra">
             <h3>Finalizar compra</h3>
-
-            <div id="tarjetaselect">
+            <div class="cambiodetarjeta">
+            <div id="tarjetaselect" class="tarjeta">
               tarjeta seleccionada aqui
             </div>
 
-            <a href="pasareladepago.html" >Cambiar metodo de pago</a>
-            <h3>Direccion de envio</h3>
+            <a href="/html/pasareladepago.html" class="btn" ><h5><i class="bi bi-arrow-repeat"></i></h5></a>
+          </div>
+          </div>
+            <h4>Direccion de envio</h4>
 
       <div class="direccioncaja">
             <div class="direccionenvio" >
@@ -66,16 +69,22 @@
               <button class="btn" onclick="utilizarDireccion()">Utiliza esta dirección</button>
             
             </div>
-            <div>
-              <img src="../Images/Glutenfree1.jpg.jpg" alt="logo" width="10%"/>
-              <h4>Envio gratis en su primer pedido</h4>
-              <h5>Por compra superior a 30€</h5>
-            </div>
-            <div>
-              <img src="../Images/Glutenfree1.jpg.jpg" alt="logo" width="10%"/>
-              <h4>Descuento del 10% en siguientes compras</h4>
-              <h5>Por compra superior a 30€</h5>
-            </div>
+            <section class="garantia enviogratis">
+        
+              <div>
+                  <h1><i class="bi bi-truck"></i></h1>
+                  <div>
+                  <h5>Envio gratis en pedidos superiores a 20€</h5>
+                  <h6>Recibe tu pedido en 3/4 días laborables. Envios a peninsula y Baleares. Envios a Islas Canarias desde 4€</h6>
+                </div>
+              </div>
+              <div>
+                  <h1><i class="bi bi-coin"></i></h1>
+                  <div>
+                  <h5>Descuento del 10% en su proxima compra</h5>
+                  <h6>Ofrecemos descuento en compras superiores a 50€. Consulta condiciones</h6>
+                </div>
+              </div>
           </div>
           <div class="resumendesucompra caja">
             <h4>Resumen de su compra</h4>
@@ -176,6 +185,7 @@
 
 
 <script src="/js/finalizarcompra.js" > </script>
+<script src="/js/carrito.js" > </script>
 
 
 </body>

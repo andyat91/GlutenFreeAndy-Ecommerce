@@ -57,7 +57,7 @@ function addCard() {
     }).then(function(json) {
         console.log(json)
         alert(json.message);
-    
+        window.location.reload()
     
     }).catch(function(error) {
         console.log(error)

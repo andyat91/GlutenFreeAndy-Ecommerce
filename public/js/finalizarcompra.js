@@ -30,7 +30,7 @@ function finalizarCompras() {
                                                     </div>
                                                 </div>
                                                     <div>
-                                                        <button onclick="delete(${json[i].id})" class="btn" ><b><i class="bi bi-trash3"></i></b></button>
+                                                        <button onclick="borrarProducto(${json[i].id})" class="btn" ><b><i class="bi bi-trash3"></i></b></button>
                                                     </div>
                                                 </div>`
              
@@ -43,7 +43,7 @@ function finalizarCompras() {
          `                              
                                         <h4>Total</h4>
                                         <h3 class="m-color">${suma} <i class="bi bi-cash-coin"></i></h3>
-                                        <button class=btn onclick="pagoFinal()">Finalizar compra</button>`  
+                                        <button class="btn" onclick="pagoFinal()">Finalizar compra</button>`  
             console.log(suma)
         localStorage.setItem("preciofinal",suma);
     }).catch(function(error) {
@@ -67,7 +67,7 @@ function selectCard() {
         console.log(json)
         localStorage.setItem("tarjeta",json);
         const containertarjeta = document.getElementById("tarjetaselect");
-        containertarjeta.innerHTML = `Tarjeta seleccionada :${json}`;
+        containertarjeta.innerHTML = `<h5>${json}<i class="bi bi-check2-circle check"></i></h5>`;
 
     }).catch(function(error) {
         console.log(error)

@@ -104,7 +104,7 @@ let cantidad = 1;
 
     }).then(function(json) {
         console.log(json.message);
-
+        window.location.reload()
     }).then(function(error) {
         console.log(error.message)
     })

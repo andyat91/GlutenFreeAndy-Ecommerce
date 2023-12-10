@@ -20,7 +20,7 @@ fetch(`http://localhost:8000/login`, {
 
 }).then(function (json) {
     console.log(json);
-    alert(json.message)
+    
     
     fetch(`http://localhost:8000/loginok`, {
         method:"POST",

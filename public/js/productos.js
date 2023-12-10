@@ -101,6 +101,12 @@ let cantidad = 1;
         }).then(function(json) {
             console.log(json)
         //    localStorage.setItem("compraproductoid",json.insertId)
+        alert(json.message)
+
+        if (urlcarrito.includes("carrito")) {
+
+            window.location.reload()
+        }
     
         }).catch(function(error) {
             console.log(error)
@@ -128,11 +134,9 @@ let cantidad = 1;
 
         }).then(function(json) {
 
-         // console.log(json[0].productoid);
 
             if(json.length > 0) {
             
-                    //matame round two
                 fetch(`http://localhost:8000/cantidad`, {
                     method:"POST",
                     headers: {
@@ -146,6 +150,11 @@ let cantidad = 1;
 
                 }).then(function(json) {
                     console.log(json)
+
+                    let urlcarrito = window.location.href;   
+                    if (urlcarrito.includes("carrito")) {
+                        window.location.reload()
+                        }
                    
                 }).catch(function(error) {
                     console.log(error.message)
@@ -169,7 +178,13 @@ let cantidad = 1;
             
             
                 }).then(function(json) {
-                    console.log(json)
+                    alert(json.message)
+                    spancarrito()
+                    let urlcarrito = window.location.href;
+                    if (urlcarrito.includes("carrito")) {
+                        window.location.reload()
+                        }
+                        
                   
                 }).catch(function(error) {
                     console.log(error)
@@ -183,10 +198,33 @@ let cantidad = 1;
         })
 
    
-   }
+   };
 
-   
+  //Preguntar en clase el primero no lo hace bien
+   spancarrito()
 
 };
 
 
+function spancarrito() {
+
+    let compraid = localStorage.getItem("compraid");
+    fetch(`http://localhost:8000/spancarrito?compraid=${compraid}`
+    
+    ).then(function(response) {
+     return response.json()
+ 
+ 
+    }).then(function(json) {
+     console.log(json[0].span);
+        
+        
+         const span = document.getElementById("cantidad");
+         span.innerHTML = `${json[0].span}`
+      //  window.location.reload()
+    }).catch(function(json) {
+ 
+ 
+    });
+ 
+}

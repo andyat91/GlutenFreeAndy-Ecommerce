@@ -92,9 +92,18 @@ width: 94%;
 }
 
 .resumendesucompra {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     border: 2px solid var(--primario-claro);
     border-radius: 16px;
     padding: 40px;
+   
+    width: 100%;
+}
+.resumendesucompra .btn{
+    width: 100%;
 }
 
 #caja {

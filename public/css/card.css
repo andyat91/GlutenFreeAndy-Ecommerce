@@ -159,3 +159,14 @@
     margin: 0px;
 
   }
+  #tarjetaselect {
+    text-decoration: none;
+    border-radius: 8px;
+    background-color: var(--primario-claro);
+    color:var(--blanco);
+    border: 2px solid;
+    display:inline-block;
+    padding: 8px 120px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
