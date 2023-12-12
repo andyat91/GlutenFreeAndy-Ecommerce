@@ -23,7 +23,7 @@ function compras() {
             for(i=0 ; i<json.length ; i++) {
                 containercompra.innerHTML +=`  <div class="cardcarrito">
                                                 <div class="fotoproducto">
-                                                    <img src="..${json[i].foto}" alt="logo" width="15%" />
+                                                    <img src="..${json[i].foto}" alt="logo" width="20%" />
                                                     <div>
                                                         <h5>${json[i].nombre}</h5>
                                                         <h5 class="m-color">${json[i].precio}  <i class="bi bi-cash-coin"></i></h5> 

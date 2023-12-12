@@ -2,6 +2,9 @@ header .index-login {
    display:flex;
    align-items: center; 
    justify-content: space-between;
+   margin-bottom: 32px;
+   margin-top: 32px;
+   
 }
 header h3 {
     margin: 0px

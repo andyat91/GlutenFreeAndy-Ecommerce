@@ -13,6 +13,7 @@
     border-radius: 15px;
     background-color: white;
     width: 25%;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
                
 }
 .card img{
@@ -20,6 +21,7 @@
     height: 160px; 
     overflow: hidden;
     margin-bottom: 32px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .valoracion i{
     margin-right: 8px;
@@ -82,6 +84,7 @@
     margin-bottom: 8px;
     display: flex;
     justify-content: space-between;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
   }
   .cardcarrito h5 {
     margin:0px;

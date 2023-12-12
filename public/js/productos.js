@@ -49,6 +49,7 @@ function productosCard() {
     }).catch(function(error) {
         console.log(error)
     })
+    spancarrito();
 };
 
 function addProducto(productoid) {
@@ -62,6 +63,7 @@ let cantidad = 1;
  let comprobacion  = localStorage.getItem("compraid");
 
     if(comprobacion == null) {
+
 
 
   //Fetch metido uno dentro de otro EL QUE DEPENDE DEL OTRO VA DENTRO 
@@ -201,8 +203,7 @@ let cantidad = 1;
    };
 
   //Preguntar en clase el primero no lo hace bien
-   spancarrito()
-
+  
 };
 
 

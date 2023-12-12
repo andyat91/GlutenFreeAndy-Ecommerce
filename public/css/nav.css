@@ -1,6 +1,5 @@
 nav {
     border-top: 2px solid var(--gris);
-    border-bottom: 2px solid var(--gris);
     background-color: var(--primario-claro);
     padding:16px 16px;
     color:var(--blanco);
@@ -9,7 +8,8 @@ nav {
 nav div{
     display: flex;
     justify-content: space-between;
-
+    margin-top: 24px;
+    margin-bottom: 16px;
 }
 nav div ul{
     display: flex;
