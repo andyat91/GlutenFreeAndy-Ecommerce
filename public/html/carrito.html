@@ -57,88 +57,11 @@
  
 <section>
   <h3>Productos recomendados</h3> 
-  <div class="recomendados">
-  <div class="card card-recomendados"> 
+ 
+    <div class="main-cards wrap" id="cards"> 
 
-          <img src="../Images/pastasin.jpg" alt="pasta" width="20%" />
-        <div>
-            <div> 
-              <h4>Pasta sin Gluten</h4>
-              <h5>1,70<i class="bi bi-cash-coin"></i></h5>
-            </div>
-              <div class="valoracion">
-                <span class="m-color">
-                      <i class="bi bi-star m-color"></i>
-                      <i class="bi bi-star m-color"></i>
-                      <i class="bi bi-star m-color"></i>
-                </span>
-                      <i class="bi bi-star"></i>
-                      <i class="bi bi-star"></i>
-              </div> 
-        </div>
-          <button class="btn">Añadir al carrito</button> 
-  </div>  
-  <div class="card card-recomendados"> 
-
-        <img src="../Images/panrallado.jpg" alt="pasta" width="20%" />
-      <div>
-          <div> 
-            <h4>Pasta rallado</h4>
-            <h5>2.15<i class="bi bi-cash-coin"></i></h5>
-          </div>
-            <div class="valoracion">
-              <span class="m-color">
-                    <i class="bi bi-star m-color"></i>
-                    <i class="bi bi-star m-color"></i>
-                    <i class="bi bi-star m-color"></i>
-              </span>
-                    <i class="bi bi-star"></i>
-                    <i class="bi bi-star"></i>
-            </div>  
-            <button class="btn">Añadir al carrito</button> 
-      </div>
-  </div> 
-  <div class="card card-recomendados"> 
-
-      <img src="../Images/pansingluten.jpg" alt="pasta" width="20%" />
-      <div>
-        <div> 
-          <h4>Pan sin gluten</h4>
-          <h5>4.10<i class="bi bi-cash-coin"></i></h5>
-        </div>
-          <div class="valoracion">
-            <span class="m-color">
-                  <i class="bi bi-star m-color"></i>
-                  <i class="bi bi-star m-color"></i>
-                  <i class="bi bi-star m-color"></i>
-            </span>
-                  <i class="bi bi-star"></i>
-                  <i class="bi bi-star"></i>
-          </div>
-          <button class="btn">Añadir al carrito</button>   
-      </div>
-  </div>
-  <div class="card card-recomendados"> 
-
-    <img src="../Images/galletassin.jpg" alt="pasta" width="20%" />
-    <div>
-      <div> 
-        <h4>Galletas sin gluten</h4>
-        <h5>3.95<i class="bi bi-cash-coin"></i></h5>
-      </div>
-        <div class="valoracion">
-          <span class="m-color">
-                <i class="bi bi-star m-color"></i>
-                <i class="bi bi-star m-color"></i>
-                <i class="bi bi-star m-color"></i>
-          </span>
-                <i class="bi bi-star"></i>
-                <i class="bi bi-star"></i>
-        </div>
-        <button class="btn">Añadir al carrito</button>   
-    </div>
 </div>
-</div>  
+ 
 </section>
 <section class="wrap garantia">
         
@@ -190,7 +113,7 @@
      
           <div>
             <ul class="menu">
-           <li><a href="politicadeprivacidad.html" >Politica de privacidad</a></li> 
+              <li><a href="/html/politicadeprivacidad.html" >Politica de privacidad</a></li> 
            <li> <a href="https://www.google.es/" >Condiciones de compra</a></li>
            <li> <a href="https://www.google.es/">Opiniones de clientes</a></li>
            <li>   <a href="https://www.google.es/">Atención al cliente</a></li>
@@ -201,10 +124,12 @@
         <div class="newsletter">
           <div>
             <h5>Unete a nuestras novedades y recibe ofertas y promociones</h5>
-            <form>
-              <input type="email" name="email"  placeholder="introduce tu email" class="input" />
-              <button type="submit" class="btn">Suscribirme</button>
-            </form>
+            <div class="onclick">
+              <form>
+                <input type="email" id="suscripcion"  placeholder="introduce tu email" class="input" />
+              </form>
+                <button onclick="suscripcion()" class="btn">Suscribirme</button>
+              </div>
             <form class="check">
               <label for="email"><input type="checkbox" class="check" name="email" />Acepto la politica de privacidad de la pagina</label>
             </form>
@@ -223,6 +148,7 @@
     </div>
     <script src="/js/carrito.js"></script>
     <script src="/js/productos.js"></script>
+    <script src="/js/suscripcion.js"></script>
  
 </footer>
 

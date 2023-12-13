@@ -24,10 +24,11 @@ function compras() {
                 containercompra.innerHTML +=`  <div class="cardcarrito">
                                                 <div class="fotoproducto">
                                                     <img src="..${json[i].foto}" alt="logo" width="20%" />
-                                                    <div>
+                                                    <div class="productoyprecio">
                                                         <h5>${json[i].nombre}</h5>
-                                                        <h5 class="m-color">${json[i].precio}  <i class="bi bi-cash-coin"></i></h5> 
-                                                        
+                                                        <div class="preciocarrito">
+                                                        <h5 class="m-color ">${json[i].precio}  <i class="bi bi-cash-coin"></i></h5> 
+                                                        </div>
                                                     </div>
                                                 </div>
                                                     <div>

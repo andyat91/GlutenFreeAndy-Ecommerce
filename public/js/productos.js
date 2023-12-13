@@ -17,6 +17,7 @@ function productosCard() {
             containerCard.innerHTML += ` <div class="card">
         
                                             <img src="${json[i].foto}" />
+                                            <div class="paddingcard">
                                             <h4>${json[i].nombre} </h4>
                                             <div class="nombreprecio">
                                                 <div>
@@ -36,7 +37,7 @@ function productosCard() {
                                         <div>
                                             <button onclick="addProducto(${json[i].id})" class="btn">Añadir al carrito</button>
                                             <a href="/html/descripcion.html?productoid=${json[i].id}" class="btn" >VER</button></a>
-                                            
+                                            </div>  
                                         </div>
                                         </div>  
                                         </div>`
@@ -152,7 +153,7 @@ let cantidad = 1;
 
                 }).then(function(json) {
                     console.log(json)
-
+                    spancarrito()
                     let urlcarrito = window.location.href;   
                     if (urlcarrito.includes("carrito")) {
                         window.location.reload()
@@ -219,9 +220,13 @@ function spancarrito() {
     }).then(function(json) {
      console.log(json[0].span);
         
-        
+        if(json[0].span == null) {
+            const span = document.getElementById("cantidad");
+            span.innerHTML = `0`  
+        } else {
          const span = document.getElementById("cantidad");
          span.innerHTML = `${json[0].span}`
+        }
       //  window.location.reload()
     }).catch(function(json) {
  

@@ -434,6 +434,22 @@ app.get(`/spancarrito`, function(request,response) {
     });
 });
 
+//----Endpoint para suscribirse a newsletter---------------------------------------------------------------------------------------------------------------------------
+
+app.post('/suscripcion', function(request,response) {
+
+  let email = request.body.emailsuscripcion;
+console.log(email)
+  connection.query(
+    `insert into newsletter (email,suscrito,contenido,fechapublicacion) values ("${email}",1,"Precios de lista de la compra de productos aptos para celiacos; desde que existe esta enfermedad, la cesta de la compra de personas con intolerancia al gluten o celiacas aumenta un 40%, sobre todo en productos que sustituyen al trigo","10-12-23")`,
+    function(error,result,fields) {
+      if (error) {
+        response.status(400).send(`error ${error.message}`);
+        return;
+      }
+    response.send({message:"Suscripción realizada con exito"}) 
+    });
+});
 
 
 

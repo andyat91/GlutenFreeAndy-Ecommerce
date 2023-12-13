@@ -110,4 +110,21 @@ height: 100%;
  width: 100%;
 
 }
-
+.politica {
+  border-bottom: 2px solid;
+  border-color: var(--primario-claro);
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+}
+.tratamiento {
+  border-bottom: 2px solid;
+  border-color: var(--primario-claro);
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+}
+.politica h4 {
+  color: var(--primario-oscuro);
+}
+.tratamiento h4 {
+  color: var(--primario-oscuro);
+}

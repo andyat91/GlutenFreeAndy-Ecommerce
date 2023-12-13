@@ -149,7 +149,7 @@
      
           <div>
             <ul class="menu">
-           <li><a href="politicadeprivacidad.html" >Politica de privacidad</a></li> 
+              <li><a href="/html/politicadeprivacidad.html" >Politica de privacidad</a></li> 
            <li> <a href="https://www.google.es/" >Condiciones de compra</a></li>
            <li> <a href="https://www.google.es/">Opiniones de clientes</a></li>
            <li>   <a href="https://www.google.es/">Atención al cliente</a></li>
@@ -160,10 +160,12 @@
         <div class="newsletter">
           <div>
             <h5>Unete a nuestras novedades y recibe ofertas y promociones</h5>
-            <form>
-              <input type="email" name="email"  placeholder="introduce tu email" class="input" />
-              <button type="submit" class="btn">Suscribirme</button>
-            </form>
+            <div class="onclick">
+              <form>
+                <input type="email" id="suscripcion"  placeholder="introduce tu email" class="input" />
+              </form>
+                <button onclick="suscripcion()" class="btn">Suscribirme</button>
+              </div>
             <form class="check">
               <label for="email"><input type="checkbox" class="check" name="email" />Acepto la politica de privacidad de la pagina</label>
             </form>
@@ -186,6 +188,7 @@
 
 <script src="/js/finalizarcompra.js" > </script>
 <script src="/js/carrito.js" > </script>
+<script src="/js/suscripcion.js"></script>
 
 
 </body>

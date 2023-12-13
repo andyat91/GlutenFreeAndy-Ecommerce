@@ -76,7 +76,7 @@ footer .btn {
     border-bottom: 1px solid var(--primario-claro);
 } 
 
-footer .newsletter form{
+footer .newsletter .onclick{
     display: flex;
 }
 footer .newsletter form input{
