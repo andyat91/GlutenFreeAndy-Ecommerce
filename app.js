@@ -451,7 +451,21 @@ console.log(email)
     });
 });
 
+//-----Endpoints valoracion carrusel-----------------------------------------------------------------------------------------------------------------------------------
 
+app.get(`/valoraciones`, function(request,response) {
+
+  connection.query(
+    `select * from valoraciones`,
+    function(error,result,fields) {
+      if (error) {
+        response.status(400).send(`error ${error.message}`);
+        return;
+      }
+    response.send(result);
+        
+    });
+});
 
 
 

@@ -11,6 +11,20 @@
     border: 2px solid var(--primario-claro);
     border-radius: 16px;
 }
+#valoracionescaja {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#valoracionescaja .btn{
+   padding: 8px;
+    border-radius: 100%;
+
+    height: 48px;
+    width: 48px;
+    
+}
 /*LOGIN CAJAS :*/
 
 .login {

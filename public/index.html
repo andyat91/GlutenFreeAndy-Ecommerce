@@ -110,13 +110,15 @@
   
   <div class="opiniones wrap">
       <div>
-      
         <h3>Opiniones de productos</h3>
         <h5>Consigue gran variedad de productos</h5>
         <a href="descripcion4.html" class="btn">Leer todas las opiniones</a>
       </div>
-      <div class="caja caja-destacada">
-        <p>
+      <div class="caja caja-destacada" id="valoracionescaja">
+
+        <button onclick="mostrarSiguienteValoracion()" class="btn"><i class="bi bi-arrow-left"></i></button>
+        <div>
+        <p id="valoracionText">
           El precio esta bien algo más barato que en los centros comerciales,
           este pan es mucho mejor que otras marcas y el precio es más barato o
           igual: Recomiendo su compra. A ver si de una vez los politicos tienen
@@ -124,7 +126,7 @@
           productos.
           <h5>Maricarmen Sanchez</h5></p>
           <div class="valoracion">
-            <span >
+            <span id="valoracionEstrellas">
               <i class="bi bi-star "></i>
               <i class="bi bi-star "></i>
               <i class="bi bi-star "></i>
@@ -132,6 +134,8 @@
               <i class="bi bi-star "></i>
         </span>
       </div>
+    </div>
+      <button onclick="mostrarSiguienteValoracion()" class="btn"><i class="bi bi-arrow-right"></i></button>
     </div>
   </div>
 <section class="wrap garantia">
@@ -217,6 +221,7 @@
       </div>
     </div>
 </footer>
+<script src="js/valoraciones.js"></script>
 <script src="js/productos.js"></script>
 <script src="js/suscripcion.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
