@@ -127,7 +127,7 @@ function pagoFinal() {
     
 
 
-    fetch(`/pagofinal/${compraid}`, {
+    fetch(`http://localhost:8000/pagofinal/${compraid}`, {
         method:"POST",
         headers: {
         "Content-Type":"application/json"
