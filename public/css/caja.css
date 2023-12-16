@@ -20,11 +20,35 @@
 #valoracionescaja .btn{
    padding: 8px;
     border-radius: 100%;
-
+    background-color: white;
+    border: 2px solid;
+    border-color: var(--resalto);
     height: 48px;
-    width: 48px;
-    
+    width: 48px;   
 }
+#valoracionescaja .btn:hover{
+    background-color: var(--gris);
+    color: white;
+    border-color: white;
+}
+#valoracionescaja i {
+    color:var(--resalto);
+}
+#valoracionescaja .opinionesdestacadas{
+    color:var(--primario-oscuro);
+    margin-top: 0px;
+    margin-bottom: 16px;
+    border-bottom: 2px solid;
+    border-color: var(--primario-claro);
+
+}
+#valoracionescaja .hidden {
+    pointer-events: none;
+    background-color: var(--blanco);
+    color: var(--blanco);
+    border-color: var(--blanco);
+  }
+  
 /*LOGIN CAJAS :*/
 
 .login {

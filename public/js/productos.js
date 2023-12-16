@@ -25,13 +25,7 @@ function productosCard() {
                                                     <h5>${json[i].precio}<i class="bi bi-currency-euro m-color"></i></h5>
                                                 </div>
                                         <div class="valoracion">
-                                            <span >
-                                                <i class="bi bi-star "></i>
-                                                <i class="bi bi-star "></i>
-                                                <i class="bi bi-star "></i>
-                                                <i class="bi bi-star "></i>
-                                                <i class="bi bi-star "></i>
-                                            </span>
+                                        ${Array.from({ length: json[i].valoracion }, () => '<i class="bi bi-star"></i>').join('')}
                                         </div>
                                             <p>${json[i].descripcioncorta}</p>
                                         <div>
