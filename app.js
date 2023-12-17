@@ -81,7 +81,7 @@ connection.connect(function(error) {
 
 
             response.send(result);
-          //  console.log(result);
+           console.log(result);
             });
 
 
@@ -242,7 +242,7 @@ app.post(`/compraproducto/:usuarioid`, function(request,response) {
         response.status(400).send(`error ${error.message}`); 
         return;
       }
-      response.send({message:"Producto nuevo añadido al carrito"}); 
+      response.send({message:"ok"}); 
 
       
     });
