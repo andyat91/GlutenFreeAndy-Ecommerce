@@ -101,8 +101,10 @@ let cantidad = 1;
         toastifycarrito ()
 
         if (urlcarrito.includes("carrito")) {
-
-            window.location.reload()
+            setTimeout(function(){
+                window.location.reload()
+            },1000)
+            
         }
     
         }).catch(function(error) {
@@ -152,7 +154,11 @@ let cantidad = 1;
                     spancarrito()
                     let urlcarrito = window.location.href;   
                     if (urlcarrito.includes("carrito")) {
-                        window.location.reload()
+
+                        setTimeout(function(){
+                            window.location.reload()
+                        },500)
+
                         }
                    
                 }).catch(function(error) {
@@ -183,7 +189,10 @@ let cantidad = 1;
                     spancarrito()
                     let urlcarrito = window.location.href;
                     if (urlcarrito.includes("carrito")) {
-                        window.location.reload()
+
+                        setTimeout(function(){
+                            window.location.reload()
+                        },500)
                         }
                         
                   
@@ -237,15 +246,15 @@ function toastifycarrito () {
 
     Toastify({
         text: "Producto añadido al carrito!",
-        duration: 2000,
+        duration: 500,
         destination: "https://github.com/apvarun/toastify-js",
         newWindow: true,
         close: false,
-        gravity: "top", // `top` or `bottom`
-        position: "center", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
+        gravity: "top",
+        position: "center", 
+        stopOnFocus: true,
         style: {
-          background: "var(--resalto)",
+          background: "var(--resalto)",//color var resalto
           width: "200px", 
           "min-height": "80px",
           opacity: 1, 

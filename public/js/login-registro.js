@@ -35,6 +35,7 @@ fetch(`http://localhost:8000/login`, {
     }).then(function(json) {
         const idComoNumero = Number(json[0].id);
         localStorage.setItem("usuarioid",idComoNumero);
+
     }).catch(function(error) {
         console.log(error)
 
@@ -42,9 +43,52 @@ fetch(`http://localhost:8000/login`, {
 
 
 
-    alert(json.message);
+    
     if(json.message ===  "logueado") {
-        window.location.href ="/index.html";
+
+
+        
+        Toastify({
+            text: "¡Bienvenido de nuevo!",
+            duration: 1000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: false,
+            gravity: "top", 
+            position: "center", 
+            stopOnFocus: true, 
+            style: {
+              background: "var(--resalto)",
+              width: "200px", 
+              "min-height": "80px",
+              opacity: 1, 
+            }
+          
+          }).showToast();
+
+          setTimeout(function() {
+            window.location.href ="/index.html";
+          },1000);
+       
+    } else {
+
+        Toastify({
+            text: "Email o contraseña incorrectos",
+            duration: 2500,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: false,
+            gravity: "top",
+            position: "center", 
+            stopOnFocus: true, 
+            style: {
+              background: "var(--resalto)",
+              width: "200px", 
+              "min-height": "80px",
+              opacity: 1, 
+            }
+          
+          }).showToast();
     }
 }).catch(function (error) {
     console.log(error)
@@ -71,6 +115,24 @@ function registro() {
 
     }).then(function(json) {
         console.log(json);
+
+        Toastify({
+            text: "¡Registrado con éxito!",
+            duration: 2000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: false,
+            gravity: "top", 
+            position: "center", 
+            stopOnFocus: true,
+            style: {
+              background: "var(--resalto)",
+              width: "200px", 
+              "min-height": "80px",
+              opacity: 1, 
+            }
+          
+          }).showToast();
 
         localStorage.setItem("usuarioid",json.insertId);
 

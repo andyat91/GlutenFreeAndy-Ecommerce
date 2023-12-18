@@ -107,7 +107,24 @@ console.log(direccionenvio);
     
     }).then(function(json) {
         console.log(json)
-        alert(json.message);
+
+        Toastify({
+            text: "Dirección de envio registrada correctamente",
+            duration: 2000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: false,
+            gravity: "top",
+            position: "center", 
+            stopOnFocus: true, 
+            style: {
+              background: "var(--resalto)",
+              width: "200px", 
+              "min-height": "80px",
+              opacity: 1, 
+            }
+          
+          }).showToast();
     
     
     }).catch(function(error) {
@@ -140,7 +157,9 @@ function pagoFinal() {
 
 
     }).then(function(json) {
-        alert(json.message);
+        
+       
+
         if(json.message == "compra finalizada") {
             localStorage.removeItem("usuarioid");
             localStorage.removeItem("compraid");
@@ -150,7 +169,29 @@ function pagoFinal() {
             localStorage.removeItem("preciofinal");
             localStorage.removeItem("cantidad");
             localStorage.removeItem("productoidE");
-            window.location.href ="/index.html";
+           
+
+            Toastify({
+                text: "¡Enhorabuena!, Compra realizada con éxito. Te hemos mandado un correo con el ticket de la compra.",
+                duration: 3000,
+                destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: false,
+                gravity: "top",
+                position: "center", 
+                stopOnFocus: true, 
+                style: {
+                  background: "var(--resalto)",
+                  width: "400px", 
+                  "min-height": "120px",
+                  opacity: 1, 
+                }
+              
+              }).showToast();
+
+              setTimeout(function(){
+                window.location.href ="/index.html";
+            },3000)
             
         } else {
             alert("Compra no realizada");

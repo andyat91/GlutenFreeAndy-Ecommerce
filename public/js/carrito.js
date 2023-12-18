@@ -80,8 +80,29 @@ function borrarProducto(productoid) {
         return response.json()
 
     }).then(function(json) {
-        alert (json.message)
-        window.location.reload()
+      
+        Toastify({
+            text: "Producto eliminado del carrito",
+            duration: 500,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: false,
+            gravity: "top",
+            position: "center", 
+            stopOnFocus: true, 
+            style: {
+              background: "var(--resalto)",
+              width: "200px", 
+              "min-height": "80px",
+              opacity: 1, 
+            }
+          
+          }).showToast();
+          setTimeout(function() {
+            window.location.reload() 
+          },500)
+
+   
     }).catch(function(error) {
         console.log(error)
     })
@@ -104,8 +125,28 @@ let cantidad = 1;
         return response.json()
 
     }).then(function(json) {
-        console.log(json.message);
-        window.location.reload()
+        
+        Toastify({
+            text: "Cantidad reducida",
+            duration: 500,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: false,
+            gravity: "top", 
+            position: "center", 
+            stopOnFocus: true, 
+            style: {
+              background: "var(--resalto)",
+              width: "200px", 
+              "min-height": "80px",
+              opacity: 1, 
+            }
+          
+          }).showToast();
+
+          setTimeout(function(){
+            window.location.reload()
+        },500)
     }).then(function(error) {
         console.log(error.message)
     })
