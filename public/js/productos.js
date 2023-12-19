@@ -1,5 +1,23 @@
 window.addEventListener("load",productosCard);
 
+//Toastify añadir al carrito
+const toastconfiguration =   Toastify({
+    text: "Producto añadido al carrito!",
+    duration: 500,
+    destination: "https://github.com/apvarun/toastify-js",
+    newWindow: true,
+    close: false,
+    gravity: "top",
+    position: "center", 
+    stopOnFocus: true,
+    style: {
+      background: "var(--resalto)",//color var resalto
+      width: "200px", 
+      "min-height": "80px",
+      opacity: 1, 
+    }
+  
+  });
 
 function productosCard() {
 
@@ -98,7 +116,7 @@ let cantidad = 1;
         }).then(function(json) {
             console.log(json)
         //    localStorage.setItem("compraproductoid",json.insertId)
-        toastifycarrito ()
+        toastconfiguration.showToast();
 
         if (urlcarrito.includes("carrito")) {
             setTimeout(function(){
@@ -149,12 +167,13 @@ let cantidad = 1;
 
                 }).then(function(json) {
                     
-                    toastifycarrito ()
+                    toastconfiguration.showToast();
 
                     spancarrito()
                     let urlcarrito = window.location.href;   
                     if (urlcarrito.includes("carrito")) {
-
+                        
+                        toastconfiguration.showToast();
                         setTimeout(function(){
                             window.location.reload()
                         },500)
@@ -184,7 +203,7 @@ let cantidad = 1;
             
                 }).then(function(json) {
                     
-                    toastifycarrito ()
+                    toastconfiguration.showToast();
 
                     spancarrito()
                     let urlcarrito = window.location.href;
@@ -242,24 +261,3 @@ function spancarrito() {
  
 }
 
-function toastifycarrito () {
-
-    Toastify({
-        text: "Producto añadido al carrito!",
-        duration: 500,
-        destination: "https://github.com/apvarun/toastify-js",
-        newWindow: true,
-        close: false,
-        gravity: "top",
-        position: "center", 
-        stopOnFocus: true,
-        style: {
-          background: "var(--resalto)",//color var resalto
-          width: "200px", 
-          "min-height": "80px",
-          opacity: 1, 
-        }
-      
-      }).showToast();
-
-}

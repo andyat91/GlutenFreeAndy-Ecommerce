@@ -11,7 +11,7 @@ function valoraciones(valoracion) {
 
     }).then(function(json) {
 
-
+    //Realizar con hidden en una variable y utilizar para hacer la comprobacion
     for(i=0 ; i-json.valoracion ; i++) {
         estrellas[i]= `<i class="bi bi-star "></i>`;
     }
