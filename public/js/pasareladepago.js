@@ -58,7 +58,7 @@ function addCard() {
 
         Toastify({
             text: "Tarjeta añadida correctamente",
-            duration: 2000,
+            duration: 1000,
             destination: "https://github.com/apvarun/toastify-js",
             newWindow: true,
             close: false,
@@ -73,8 +73,12 @@ function addCard() {
             }
           
           }).showToast();
-        
-        window.location.reload()
+       
+          setTimeout(function() {
+            window.location.reload();
+          
+          },1000);
+    
     
     }).catch(function(error) {
         console.log(error)

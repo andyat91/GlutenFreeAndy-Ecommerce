@@ -1,23 +1,7 @@
 window.addEventListener("load",productosCard);
 
 //Toastify añadir al carrito
-const toastconfiguration =   Toastify({
-    text: "Producto añadido al carrito!",
-    duration: 500,
-    destination: "https://github.com/apvarun/toastify-js",
-    newWindow: true,
-    close: false,
-    gravity: "top",
-    position: "center", 
-    stopOnFocus: true,
-    style: {
-      background: "var(--resalto)",//color var resalto
-      width: "200px", 
-      "min-height": "80px",
-      opacity: 1, 
-    }
-  
-  });
+
 
 function productosCard() {
 
@@ -116,7 +100,23 @@ let cantidad = 1;
         }).then(function(json) {
             console.log(json)
         //    localStorage.setItem("compraproductoid",json.insertId)
-        toastconfiguration.showToast();
+        Toastify({
+            text: "Producto añadido al carrito!",
+            duration: 500,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: false,
+            gravity: "top",
+            position: "center", 
+            stopOnFocus: true,
+            style: {
+              background: "var(--resalto)",//color var resalto
+              width: "200px", 
+              "min-height": "80px",
+              opacity: 1, 
+            }
+          
+          }).showToast();
 
         if (urlcarrito.includes("carrito")) {
             setTimeout(function(){
@@ -167,13 +167,28 @@ let cantidad = 1;
 
                 }).then(function(json) {
                     
-                    toastconfiguration.showToast();
+                    Toastify({
+                        text: "Producto añadido al carrito!",
+                        duration: 500,
+                        destination: "https://github.com/apvarun/toastify-js",
+                        newWindow: true,
+                        close: false,
+                        gravity: "top",
+                        position: "center", 
+                        stopOnFocus: true,
+                        style: {
+                          background: "var(--resalto)",//color var resalto
+                          width: "200px", 
+                          "min-height": "80px",
+                          opacity: 1, 
+                        }
+                      
+                      }).showToast();
 
                     spancarrito()
                     let urlcarrito = window.location.href;   
                     if (urlcarrito.includes("carrito")) {
-                        
-                        toastconfiguration.showToast();
+
                         setTimeout(function(){
                             window.location.reload()
                         },500)
@@ -203,7 +218,23 @@ let cantidad = 1;
             
                 }).then(function(json) {
                     
-                    toastconfiguration.showToast();
+                    Toastify({
+                        text: "Producto añadido al carrito!",
+                        duration: 500,
+                        destination: "https://github.com/apvarun/toastify-js",
+                        newWindow: true,
+                        close: false,
+                        gravity: "top",
+                        position: "center", 
+                        stopOnFocus: true,
+                        style: {
+                          background: "var(--resalto)",//color var resalto
+                          width: "200px", 
+                          "min-height": "80px",
+                          opacity: 1, 
+                        }
+                      
+                      }).showToast();
 
                     spancarrito()
                     let urlcarrito = window.location.href;

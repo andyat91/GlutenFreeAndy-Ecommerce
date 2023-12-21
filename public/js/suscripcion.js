@@ -15,7 +15,7 @@ function suscripcion() {
         return response.json()
 
     }).then(function(json) {
-        alert(json.message)
+       
 
         Toastify({
             text: "Suscripción realizada",

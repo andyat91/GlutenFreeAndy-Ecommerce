@@ -161,7 +161,7 @@ function pagoFinal() {
        
 
         if(json.message == "compra finalizada") {
-            localStorage.removeItem("usuarioid");
+          
             localStorage.removeItem("compraid");
             localStorage.removeItem("direccionenvio");
             localStorage.removeItem("numerotarjeta");

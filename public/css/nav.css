@@ -8,13 +8,13 @@ nav {
 nav div{
     display: flex;
     justify-content: space-between;
-    margin-top: 16px;
-    margin-bottom: 16px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 nav div ul{
     display: flex;
     justify-content: space-between;
-    align-items: left;
+    align-items: center;
     list-style-type: none;
     padding: 0px;
 
@@ -32,4 +32,24 @@ nav div ul li a:hover{
 }
 #logout{
     padding-right: 0px;
+
+}
+
+.spanlogin {
+    
+    color:var(--blanco);
+    background-color: var(--gris);
+    padding: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+}
+#spanlogin {
+    display: flex;
+    align-items: center;
+}
+#spanlogin .btn{
+    margin: 0px;
+    padding: 8px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
 }

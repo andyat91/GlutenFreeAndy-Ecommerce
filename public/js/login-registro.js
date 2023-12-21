@@ -1,4 +1,4 @@
-
+ window.addEventListener("load",loginok());
 
 
 function iniciarSesion() {
@@ -35,21 +35,25 @@ fetch(`http://localhost:8000/login`, {
     }).then(function(json) {
         const idComoNumero = Number(json[0].id);
         localStorage.setItem("usuarioid",idComoNumero);
+        localStorage.setItem("nombre",json[0].nombre);
+        console.log(json[0].nombre,json[0].apellidos)
+        localStorage.setItem("apellidos",json[0].apellidos);
 
     }).catch(function(error) {
         console.log(error)
 
     })
 
-
-
     
     if(json.message ===  "logueado") {
-//json parse
 
-        
+
+        const nombre = localStorage.getItem("nombre"); 
+        const apellidos = localStorage.getItem("apellidos"); 
+
+
         Toastify({
-            text: "¡Bienvenido de nuevo!",
+            text: `¡Bienvenido de nuevo!`,
             duration: 1000,
             destination: "https://github.com/apvarun/toastify-js",
             newWindow: true,
@@ -68,6 +72,7 @@ fetch(`http://localhost:8000/login`, {
 
           setTimeout(function() {
             window.location.href ="/index.html";
+          
           },1000);
        
     } else {
@@ -96,6 +101,8 @@ fetch(`http://localhost:8000/login`, {
 })
 
 }
+
+
 function registro() {
 
     const nombre = document.getElementById("nombreR").value;
@@ -139,4 +146,63 @@ function registro() {
     }).catch(function(error) {
         console.log(error.message);
     })
+}
+
+
+function loginok() {
+
+
+    const nombre = localStorage.getItem("nombre"); 
+    const apellidos = localStorage.getItem("apellidos"); 
+    
+
+    if(nombre == null || apellidos == null) {
+    
+        const spanlogin = document.getElementById("spanlogin");
+        spanlogin.innerHTML = `<li id="logout"><a href="/html/login.html">Login</a></li>`;
+
+    } else {
+
+        const spanlogin = document.getElementById("spanlogin");
+        spanlogin.innerHTML = `<li id="logout" class="spanlogin">${nombre} ${apellidos}</li>
+                                <button class="btn" onclick="logout()">Logout</button>`;
+
+    }
+}
+
+function logout() {
+
+    localStorage.removeItem("nombre");
+    localStorage.removeItem("apellidos");
+    localStorage.removeItem("usuarioid");
+    localStorage.removeItem("compraid");
+    localStorage.removeItem("direccionenvio");
+    localStorage.removeItem("numerotarjeta");
+    localStorage.removeItem("tarjeta");
+    localStorage.removeItem("preciofinal");
+    localStorage.removeItem("cantidad");
+    localStorage.removeItem("productoidE");
+
+    Toastify({
+        text: "Sesion cerrada correctamente.¡Hasta la próxima!",
+        duration: 1500,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: false,
+        gravity: "top",
+        position: "center", 
+        stopOnFocus: true, 
+        style: {
+          background: "var(--resalto)",
+          width: "400px", 
+          "min-height": "120px",
+          opacity: 1, 
+        }
+      
+      }).showToast();
+
+      setTimeout(function(){
+        window.location.href ="/html/login.html";
+    },1500)
+
 }

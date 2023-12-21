@@ -343,7 +343,7 @@ app.post("/login", function (request, response) {
   //connection.query tiene una funcion dentro, si error mostrar mensaje y si ok realizar consulta.
 
   connection.query(
-    `select id from usuario where email = "${email}" and password = "${password}"`,
+    `select * from usuario where email = "${email}" and password = "${password}"`,
     function (error, result, fields) {
       if (error) {
         response.status(400).send(`error ${error.message}`);
@@ -365,7 +365,7 @@ app.post(`/loginok`, function(request,response) {
   const email = request.body.email;
 
   connection.query(
-    `select id from usuario where email ="${email}" `,
+    `select * from usuario where email ="${email}" `,
     function(error,result,fields) {
       if (error) {
         response.status(400).send(`error ${error.message}`);
