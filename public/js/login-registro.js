@@ -36,7 +36,7 @@ fetch(`http://localhost:8000/login`, {
         const idComoNumero = Number(json[0].id);
         localStorage.setItem("usuarioid",idComoNumero);
         localStorage.setItem("nombre",json[0].nombre);
-        console.log(json[0].nombre,json[0].apellidos)
+        // console.log(json[0].nombre,json[0].apellidos)
         localStorage.setItem("apellidos",json[0].apellidos);
 
     }).catch(function(error) {
