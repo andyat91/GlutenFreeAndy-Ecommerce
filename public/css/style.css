@@ -24,9 +24,10 @@ hsl(var(--hue) 30%, 10%, 0.30);
 
 
 body{font-family: "inter", sans-serif;}
+
 h1, h2, h3, h4, h5 {
     margin: 3rem 0 1.38rem;
-    font-family: 'Inder', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
     line-height: 1.3;
   }
